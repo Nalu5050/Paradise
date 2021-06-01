@@ -1,15 +1,15 @@
 /datum/quirk/no_taste
 	name = "Ageusia"
-	desc = "La comida no te sabe a nada, eso si, el veneno igual si lo saboreas."
+	desc = "You can't taste anything! Toxic food will still poison you."
 	value = 0
 	mob_trait = TRAIT_AGEUSIA
-	gain_text = "<span class='notice'>Se te durmio la lengua!</span>"
-	lose_text = "<span class='notice'>Nom nom nom.</span>"
-	medical_record_text = "Paciente padece de Ageusia."
+	gain_text = "<span class='notice'>You can't taste anything!</span>"
+	lose_text = "<span class='notice'>You can taste again!</span>"
+	medical_record_text = "Patient suffers from ageusia and is incapable of tasting food or reagents."
 
 /datum/quirk/terminator
-	name = "IPC || Lata Dura"
-	desc = "Eres un IPC con una capa exterior mas resistente y pesada, no eres tan rapido como los demas."
+	name = "Terminator"
+	desc = "Eres un IPC que has sido usado para la guerra. Eres resistente, pero tosco y lento. (Solo afecta a los IPC)"
 	value = 0
 	lose_text = "<span class='notice'>Tu cuerpo se aligera, pero te sientes fragil.</span>"
 
