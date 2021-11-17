@@ -52,6 +52,7 @@
 		if(pulling == W)
 			stop_pulling()
 		update_inv_l_hand()
+		W.gotcha(src) // hispania
 		return 1
 	return 0
 
@@ -68,6 +69,7 @@
 		if(pulling == W)
 			stop_pulling()
 		update_inv_r_hand()
+		W.gotcha(src) // hispania
 		return 1
 	return 0
 
@@ -206,6 +208,14 @@
 		if(s_store)
 			items += s_store
 	return items
+
+/mob/living/proc/unequip_everything()
+	var/list/items = list()
+	items |= get_equipped_items(TRUE)
+	for(var/I in items)
+		unEquip(I)
+	drop_l_hand()
+	drop_r_hand()
 
 /obj/item/proc/equip_to_best_slot(mob/M)
 	if(src != M.get_active_hand())

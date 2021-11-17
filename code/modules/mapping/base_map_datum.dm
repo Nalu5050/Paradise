@@ -12,3 +12,7 @@
 	var/technical_name
 	/// Path to the map file
 	var/map_path
+	/// URL to the maps webmap
+	var/webmap_url
+	/// HISPANIA - Solo puede ser llamado por admin
+	var/only_admin = FALSE

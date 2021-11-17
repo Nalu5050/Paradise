@@ -58,7 +58,7 @@
 	var/knife_x_offset = 0
 	var/knife_y_offset = 0
 
-	var/can_holster = TRUE
+	var/can_holster = FALSE  // Anything that can be holstered should be manually set
 
 	var/list/upgrades = list()
 
@@ -162,7 +162,7 @@
 	if(flag) //It's adjacent, is the user, or is on the user's person
 		if(target in user.contents) //can't shoot stuff inside us.
 			return
-		if(!ismob(target) && !fullauto || user.a_intent == INTENT_HARM && !fullauto) //melee attack
+		if(!ismob(target) || user.a_intent == INTENT_HARM) //melee attack
 			return
 		if(target == user && user.zone_selected != "mouth") //so we can't shoot ourselves (unless mouth selected)
 			return
@@ -417,7 +417,7 @@
 	return TRUE
 
 /obj/item/gun/extinguish_light()
-	if(gun_light.on)
+	if(gun_light?.on)
 		toggle_gunlight()
 		visible_message("<span class='danger'>[src]'s light fades and turns off.</span>")
 

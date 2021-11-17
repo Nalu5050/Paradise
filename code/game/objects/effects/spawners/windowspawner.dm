@@ -26,7 +26,8 @@
 			var/obj/structure/window/WI = new window_to_spawn_regular(get_turf(src))
 			WI.dir = cdir
 	else
-		new window_to_spawn_full(get_turf(src))
+		var/obj/structure/window/WI = new window_to_spawn_full(get_turf(src)) // Hispania Windows Colors
+		WI.color = color
 
 	if(useGrille)
 		new /obj/structure/grille(get_turf(src))
@@ -58,6 +59,12 @@
 	icon_state = "twindow_spawner"
 	window_to_spawn_regular = /obj/structure/window/reinforced/tinted
 	window_to_spawn_full = /obj/structure/window/full/reinforced/tinted
+
+/obj/effect/spawner/window/reinforced/polarized
+	name = "electrochromic reinforced window spawner"
+	icon_state = "pwindow_spawner"
+	window_to_spawn_regular = /obj/structure/window/reinforced/polarized
+	window_to_spawn_full = /obj/structure/window/full/reinforced/polarized
 
 /obj/effect/spawner/window/shuttle
 	name = "shuttle window spawner"

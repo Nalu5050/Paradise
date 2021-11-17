@@ -1,3 +1,6 @@
+#define NUKE_INTACT 0
+#define NUKE_CORE_MISSING 1
+#define NUKE_MISSING 2
 /*
  * GAMEMODES (by Rastaf0)
  *
@@ -54,7 +57,18 @@
 		if((player.client)&&(player.ready))
 			playerC++
 
-	if(!GLOB.configuration.gamemode.enable_gamemode_player_limit || (playerC >= required_players))
+	if(playerC >= required_players)
+		return 1
+	return 0
+
+///can_start_solo_readys()
+///Chequea si no pudo comenzar unicamente porque no hubo readys
+/datum/game_mode/proc/can_start_solo_readys()
+	var/playerC = 0
+	for(var/mob/new_player/player in GLOB.player_list)
+		if((player.client)&&(player.ready))
+			playerC++
+	if(playerC >= required_players)
 		return 1
 	return 0
 
@@ -257,7 +271,7 @@
 	// Get a list of all the people who want to be the antagonist for this round, except those with incompatible species
 	for(var/mob/new_player/player in players)
 		if(!player.client.skip_antag)
-			if((role in player.client.prefs.be_special) && !(player.client.prefs.species in protected_species))
+			if((role in player.client.prefs.be_special) && !(player.client.prefs.active_character.species in protected_species))
 				player_draft_log += "[player.key] had [roletext] enabled, so we are drafting them."
 				candidates += player.mind
 				players -= player
@@ -443,6 +457,15 @@
 			nukecode = bomb.r_code
 	return nukecode
 
+/proc/get_nuke_status()
+	var/nuke_status = NUKE_MISSING
+	for(var/obj/machinery/nuclearbomb/bomb in GLOB.machines)
+		if(is_station_level(bomb.z))
+			nuke_status = NUKE_CORE_MISSING
+			if(bomb.core)
+				nuke_status = NUKE_INTACT
+	return nuke_status
+
 /datum/game_mode/proc/replace_jobbanned_player(mob/living/M, role_type)
 	var/list/mob/dead/observer/candidates = SSghost_spawns.poll_candidates("Do you want to play as a [role_type]?", role_type, FALSE, 10 SECONDS)
 	var/mob/dead/observer/theghost = null
@@ -543,3 +566,7 @@
 	var/datum/atom_hud/antag/antaghud = GLOB.huds[ANTAG_HUD_EVENTMISC]
 	antaghud.leave_hud(mob_mind.current)
 	set_antag_hud(mob_mind.current, null)
+
+#undef NUKE_INTACT
+#undef NUKE_CORE_MISSING
+#undef NUKE_MISSING

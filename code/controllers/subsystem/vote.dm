@@ -182,6 +182,8 @@ SUBSYSTEM_DEF(vote)
 				var/datum/map/top_voted_map
 				for(var/x in subtypesof(/datum/map))
 					var/datum/map/M = x
+					if(M.only_admin)
+						continue
 					// Set top voted map
 					if(. == "[initial(M.fluff_name)] ([initial(M.technical_name)])")
 						top_voted_map = M
@@ -211,7 +213,7 @@ SUBSYSTEM_DEF(vote)
 
 /datum/controller/subsystem/vote/proc/initiate_vote(vote_type, initiator_key, code_invoked = FALSE)
 	if(!mode)
-		if(started_time != null && !check_rights(R_ADMIN))
+		if(usr && started_time != null && !check_rights(R_ADMIN)) // Allow the game to call votes whenever. But check other callers
 			var/next_allowed_time = (started_time + GLOB.configuration.vote.vote_delay)
 			if(next_allowed_time > world.time)
 				return 0
@@ -241,6 +243,8 @@ SUBSYSTEM_DEF(vote)
 				question = "Map for next round"
 				for(var/x in subtypesof(/datum/map))
 					var/datum/map/M = x
+					if(M.only_admin)
+						continue
 					choices.Add("[initial(M.fluff_name)] ([initial(M.technical_name)])")
 
 			if("custom")

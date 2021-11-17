@@ -6,6 +6,7 @@
 	var/intact = TRUE
 	var/turf/baseturf = /turf/space
 	var/slowdown = 0 //negative for faster, positive for slower
+	var/transparent_floor = FALSE //used to check if pipes should be visible under the turf or not
 
 	///Properties for open tiles (/floor)
 	/// All the gas vars, on the turf, are meant to be utilized for initializing a gas datum and setting its first gas values; the turf vars are never further modified at runtime; it is never directly used for calculations by the atmospherics system.
@@ -193,6 +194,12 @@
 
 /turf/proc/TerraformTurf(path, defer_change = FALSE, keep_icon = TRUE, ignore_air = FALSE)
 	return ChangeTurf(path, defer_change, keep_icon, ignore_air)
+
+/turf/proc/Airlock(mob/user)
+	for(var/i in contents)
+		if(istype(i,/obj/machinery/door))
+			var/obj/machinery/door/A = i
+			A.try_to_activate_door(user)
 
 //Creates a new turf
 /turf/proc/ChangeTurf(path, defer_change = FALSE, keep_icon = TRUE, ignore_air = FALSE)

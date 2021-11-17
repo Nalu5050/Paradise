@@ -1,4 +1,4 @@
-GLOBAL_LIST_INIT(map_transition_config, list(CC_TRANSITION_CONFIG, PLANET_SURFACE, RANDOM_DERELICT_SHIP))
+GLOBAL_LIST_INIT(map_transition_config, list(CC_TRANSITION_CONFIG))
 
 /world/New()
 	// IMPORTANT
@@ -7,6 +7,8 @@ GLOBAL_LIST_INIT(map_transition_config, list(CC_TRANSITION_CONFIG, PLANET_SURFAC
 
 	// Right off the bat
 	enable_auxtools_debugger()
+
+	SSmetrics.world_init_time = REALTIMEOFDAY
 
 	// Do sanity checks to ensure RUST actually exists
 	if(!fexists(RUST_G))
@@ -172,11 +174,13 @@ GLOBAL_LIST_EMPTY(world_topic_handlers)
 		..(0)
 
 /world/proc/load_mode()
-	var/list/Lines = file2list("data/mode.txt")
+	log_game("Ignorando saved mode, fijando extended")
+	GLOB.master_mode = "extended"  // por si queda un modo puesto y la pop cae a 0
+/*	var/list/Lines = file2list("data/mode.txt")
 	if(Lines.len)
 		if(Lines[1])
 			GLOB.master_mode = Lines[1]
-			log_game("Saved mode is '[GLOB.master_mode]'")
+			log_game("Saved mode is '[GLOB.master_mode]'") */
 
 /world/proc/save_mode(the_mode)
 	var/F = file("data/mode.txt")
