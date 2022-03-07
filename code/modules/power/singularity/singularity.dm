@@ -116,7 +116,7 @@
 		//  it might mean we are stuck in a corner somewere. So move around to try to expand.
 		move()
 	if(current_size >= STAGE_TWO)
-		radiation_pulse(src, min(5000, (energy * 4.5) + 1000), RAD_DISTANCE_COEFFICIENT * 0.5)
+		radiation_pulse(src, min(5000, (energy * 4.5) + 1000), RAD_DISTANCE_COEFFICIENT * 0.1)
 		if(prob(event_chance))//Chance for it to run a special event TODO:Come up with one or two more that fit
 			event()
 	eat()
@@ -335,10 +335,10 @@
 	var/dir2 = 0
 	var/dir3 = 0
 	switch(direction)
-		if(NORTH||SOUTH)
+		if(NORTH, SOUTH)
 			dir2 = 4
 			dir3 = 8
-		if(EAST||WEST)
+		if(EAST, WEST)
 			dir2 = 1
 			dir3 = 2
 	var/turf/T2 = T

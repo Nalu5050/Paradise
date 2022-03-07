@@ -32,7 +32,7 @@
 	act = lowertext(act)
 
 	switch(act)		//This switch makes sure you have air in your lungs before you scream
-		if("growl", "growls", "howl", "howls", "hiss", "hisses", "scream", "screams", "sneeze", "sneezes", "laugh", "laughs")
+		if("growl", "growls", "howl", "howls", "hiss", "hisses", "scream", "screams", "sneeze", "sneezes","laugh","laughs")
 			if(getOxyLoss() > 35)		//no screaming if you don't have enough breath to scream
 				on_CD = handle_emote_CD()
 				emote("gasp")
@@ -124,19 +124,26 @@
 			else								//Everyone else fails, skip the emote attempt
 				return
 
+		if("flap", "flaps", "aflap", "aflaps","flutter", "flutters")
+			if(!ismoth(src))
+				return
+			on_CD = handle_emote_CD()
+
 		if("scream", "screams")
-			on_CD = handle_emote_CD(40)
-		if("laugh", "laughs")
+			on_CD = handle_emote_CD(50) //longer cooldown
+		if("fart", "farts", "flip", "flips", "snap", "snaps")
+			on_CD = handle_emote_CD(40)				//proc located in code\modules\mob\emote.dm
+		if("laugh", "laughs", "laugh2", "laughs2", "laugh3", "laughs3")
 			on_CD = handle_emote_CD(40)
 		if("fart", "farts")
 			on_CD = handle_emote_CD(40)
-		if("flip", "flips", "snap", "snaps")
-			on_CD = handle_emote_CD()				//proc located in code\modules\mob\emote.dm
 		if("cough", "coughs", "highfive")
 			on_CD = handle_emote_CD()
 		if("gasp", "gasps")
 			on_CD = handle_emote_CD()
 		if("deathgasp", "deathgasps")
+			on_CD = handle_emote_CD(50)
+		if("spin", "spins")
 			on_CD = handle_emote_CD(50)
 		if("sneeze", "sneezes")
 			on_CD = handle_emote_CD()
@@ -285,11 +292,10 @@
 			m_type = 1
 
 		if("wag", "wags")
-			if(body_accessory)
+			if(istype(body_accessory, /datum/body_accessory/tail))
 				if(body_accessory.try_restrictions(src))
 					message = "<B>[src]</B> starts wagging [p_their()] tail."
 					start_tail_wagging()
-
 			else if(dna.species.bodyflags & TAIL_WAGGING)
 				if(!wear_suit || !(wear_suit.flags_inv & HIDETAIL))
 					message = "<B>[src]</B> starts wagging [p_their()] tail."
@@ -301,7 +307,7 @@
 			m_type = 1
 
 		if("swag", "swags")
-			if(dna.species.bodyflags & TAIL_WAGGING || body_accessory)
+			if((dna.species.bodyflags & TAIL_WAGGING) || istype(body_accessory, /datum/body_accessory/tail))
 				message = "<B>[src]</B> stops wagging [p_their()] tail."
 				stop_tail_wagging()
 			else
@@ -394,11 +400,16 @@
 					to_chat(usr, "You need your hands working in order to clap.")
 
 		if("flap", "flaps")
-			if(!restrained())
-				message = "<B>[src]</B> flaps [p_their()] wings."
-				m_type = 2
-				if(miming)
-					m_type = 1
+			message = "<B>[src]</B> flaps [p_their()] wings."
+			m_type = 2
+			if(miming)
+				m_type = 1
+
+		if("flutter", "flutters")
+			message = "<B>[src]</B> flutters [p_their()] wings."
+			m_type = 2
+			if(miming)
+				m_type = 1
 
 		if("flip", "flips")
 			m_type = 1
@@ -447,12 +458,21 @@
 								message = "<B>[src]</B> does a flip!"
 								SpinAnimation(5,1)
 
+		if("spin", "spins")
+			if(!incapacitated(ignore_lying = TRUE))
+				if(prob(5))
+					spin(32, 1)
+					to_chat(src, "<span class='warning'>You spin too much!</span>")
+					Dizzy(12)
+					Confused(12)
+				else
+					spin(20, 1)
+
 		if("aflap", "aflaps")
-			if(!restrained())
-				message = "<B>[src]</B> flaps [p_their()] wings ANGRILY!"
-				m_type = 2
-				if(miming)
-					m_type = 1
+			message = "<B>[src]</B> flaps [p_their()] wings ANGRILY!"
+			m_type = 2
+			if(miming)
+				m_type = 1
 
 		if("drool", "drools")
 			message = "<B>[src]</B> drools."
@@ -644,9 +664,51 @@
 					m_type = 2
 					//Hispania Laugh Starts Here
 					if(gender == FEMALE)
-						playsound(loc, pick(dna.species.female_laughs_sound), 60, 1, frequency = get_age_pitch()) //Hispania Screams
+						if(HAS_TRAIT(src, TRAIT_MALEFICO))
+							playsound(src, dna.species.female_laughs_sound_evil, 120, 1, frequency = get_age_pitch()) //Hispania
+						else
+							playsound(src, dna.species.female_laughs_sound, 120, 1, frequency = get_age_pitch()) //Hispania
 					else
-						playsound(loc, pick(dna.species.male_laughs_sound), 60, 1, frequency = get_age_pitch()) //Hispania Screams
+						if(HAS_TRAIT(src, TRAIT_MALEFICO))
+							playsound(src, dna.species.male_laughs_sound_evil, 120, 1, frequency = get_age_pitch()) //Hispania
+						else
+							playsound(src, dna.species.male_laughs_sound, 120, 1, frequency = get_age_pitch()) //Hispania
+					//Hispania Laugh Ends Here
+				else
+					message = "<B>[src]</B> makes a noise."
+					m_type = 2
+
+		if("laugh2", "laughs2")
+			var/M = handle_emote_param(param)
+			if(miming)
+				message = "<B>[src]</B> acts out a laugh[M ? " at [M]" : ""]."
+				m_type = 1
+			else
+				if(!muzzled)
+					message = "<B>[src]</B> laughs[M ? " at [M]" : ""]."
+					m_type = 2
+					//Hispania Laugh Starts Here
+					if(gender == FEMALE)
+						playsound(src, dna.species.female_laughs_sound2, 120, 1, frequency = get_age_pitch()) //Hispania
+					else
+						playsound(src, dna.species.male_laughs_sound2, 120, 1, frequency = get_age_pitch())
+					//Hispania Laugh Ends Here
+				else
+					message = "<B>[src]</B> makes a noise."
+					m_type = 2
+
+		if("laugh3", "laughs3")
+			var/M = handle_emote_param(param)
+			if(miming)
+				message = "<B>[src]</B> acts out a laugh[M ? " at [M]" : ""]."
+				m_type = 1
+			else
+				if(!muzzled)
+					message = "<B>[src]</B> laughs[M ? " at [M]" : ""]."
+					m_type = 2
+					//Hispania Laugh Starts Here
+					if(gender != FEMALE)
+						playsound(src, dna.species.male_laughs_sound3, 120, 1, frequency = get_age_pitch()) //Hispania
 					//Hispania Laugh Ends Here
 				else
 					message = "<B>[src]</B> makes a noise."
@@ -888,10 +950,10 @@
 					m_type = 2
 					if(gender == FEMALE)
 						//playsound(loc, dna.species.female_scream_sound, 80, 1, frequency = get_age_pitch())
-						playsound(loc, pick(dna.species.female_scream_sound), 80, 1, frequency = get_age_pitch()) //Hispania Screams
+						playsound(loc, pick(dna.species.female_scream_sound), 120, 1, frequency = get_age_pitch()) //Hispania Screams
 					else
 						//playsound(loc, dna.species.male_scream_sound, 80, 1, frequency = get_age_pitch()) //default to male screams if no gender is present.
-						playsound(loc, pick(dna.species.male_scream_sound), 80, 1, frequency = get_age_pitch()) //Hispania Screams
+						playsound(loc, pick(dna.species.male_scream_sound), 120, 1, frequency = get_age_pitch()) //Hispania Screams
 
 				else
 					message = "<B>[src]</B> makes a very loud noise[M ? " at [M]" : ""]."
@@ -960,29 +1022,14 @@
 					L.remove_status_effect(STATUS_EFFECT_HIGHFIVE)
 					return
 
-		//HISPANIA EMOTES START HERE
-		if("puke")
-			if(restrained())
-				return
-			if(isrobot(src))
-				return
-			if(handle_emote_CD(600))
-				to_chat(src, "<span class='warning'>You are still recovering forces.</span>")
-				return
-			if(ismachineperson(src)) //los ipc no tienen boca
-				return
-			to_chat(viewers(src), "<span class='warning'>[src] brings [p_their()] fingers to [p_their()] mouth and vomits on the floor!</span>")
-			vomit()
-		//HISPANIA EMOTES END HERE
-
 		if("help")
-			var/emotelist = "aflap(s), airguitar, blink(s), blink(s)_r, blush(es), bow(s)-none/mob, burp(s), choke(s), chuckle(s), clap(s), collapse(s), cough(s), cry, cries, custom, dance, dap(s)-none/mob," \
-			+ " deathgasp(s), drool(s), eyebrow, fart(s), faint(s), flap(s), flip(s), frown(s), gasp(s), giggle(s), glare(s)-none/mob, grin(s), groan(s), grumble(s), grin(s)," \
+			var/emotelist = "airguitar, blink(s), blink(s)_r, blush(es), bow(s)-none/mob, burp(s), choke(s), chuckle(s), clap(s), collapse(s), cough(s), cry, cries, custom, dance, dap(s)-none/mob," \
+			+ " deathgasp(s), drool(s), eyebrow, fart(s), faint(s), flip(s), frown(s), gasp(s), giggle(s), glare(s)-none/mob, grin(s), groan(s), grumble(s), grin(s)," \
 			+ " handshake-mob, hug(s)-none/mob, hem, highfive, johnny, jump, kiss(es), laugh(s), look(s)-none/mob, moan(s), mumble(s), nod(s), pale(s), point(s)-atom, quiver(s), raise(s), salute(s)-none/mob, scream(s), shake(s)," \
-			+ " shiver(s), shrug(s), sigh(s), signal(s)-#1-10, slap(s), smile(s),snap(s), sneeze(s), sniff(s), snore(s), stare(s)-none/mob, tremble(s), twitch(es), twitch(es)_s, puke, quill(s)," \
-			+ " wave(s), whimper(s), wink(s), yawn(s), wag(s), swag(s)"
+			+ " shiver(s), shrug(s), sigh(s), signal(s)-#1-10, slap(s), smile(s),snap(s), sneeze(s), sniff(s), snore(s), spin(s) stare(s)-none/mob, tremble(s), twitch(es), twitch(es)_s," \
+			+ " wave(s), whimper(s), wink(s), yawn(s)"
 
-			switch(dna.species.name)
+			switch(dna.species.name) //dear future coders, do not use strings like this
 				if("Diona")
 					emotelist += "\n<u>Diona specific emotes</u> :- creak(s)"
 				if("Drask")
@@ -1003,6 +1050,8 @@
 					emotelist += "\n<u>Plasmaman specific emotes</u> :- rattle(s)-none/mob"
 				if("Skeleton")
 					emotelist += "\n<u>Skeleton specific emotes</u> :- rattle(s)-none/mob"
+				if("Nian")
+					emotelist += "\n<u>Nian specific emotes</u> :- aflap(s), flap(s), flutter(s)"
 
 			if(ismachineperson(src))
 				emotelist += "\n<u>Machine specific emotes</u> :- beep(s)-none/mob, buzz(es)-none/mob, no-none/mob, ping(s)-none/mob, yes-none/mob, buzz2-none/mob"

@@ -23,7 +23,7 @@
 		"Cyborg" = "airadio",
 		"Personal AI" = "airadio",
 		"Robot" = "airadio",
-		// Civilian + Varients
+		// Assistant
 		"Assistant" = "radio",
 		"Businessman" = "radio",
 		"Civilian" = "radio",
@@ -41,8 +41,8 @@
 		"Engine Technician" = "engradio",
 		"Life Support Specialist" = "engradio",
 		"Maintenance Technician" = "engradio",
-		"Mechanic" = "engradio",
 		"Station Engineer" = "engradio",
+		"Mechanic" = "engradio",
 		// Central Command
 		"Emergency Response Team Engineer" = "dsquadradio", // I know this says deathsquad but the class for responseteam is neon green. No.
 		"Emergency Response Team Leader" = "dsquadradio",
@@ -51,6 +51,11 @@
 		"Emergency Response Team Officer" = "dsquadradio",
 		"Nanotrasen Navy Officer" = "dsquadradio",
 		"Special Operations Officer" = "dsquadradio",
+		"Solar Federation General" = "dsquadradio",
+		"Solar Federation Specops Lieutenant" = "dsquadradio",
+		"Solar Federation Specops Marine" = "dsquadradio",
+		"Solar Federation Lieutenant" = "dsquadradio",
+		"Solar Federation Marine" = "dsquadradio",
 		// Medical
 		"Chemist" = "medradio",
 		"Chief Medical Officer" = "medradio",
@@ -79,7 +84,6 @@
 		"Xenoarcheologist" = "sciradio",
 		"Xenobiologist" = "sciradio",
 		// Security
-		"Brig Physician" = "secradio",
 		"Detective" = "secradio",
 		"Forensic Technician" = "secradio",
 		"Head of Security" = "secradio",
@@ -87,8 +91,8 @@
 		"Internal Affairs Agent" = "secradio",
 		"Magistrate" = "secradio",
 		"Security Officer" = "secradio",
-		"Security Pod Pilot" = "secradio",
 		"Warden" = "secradio",
+		"Security Pod Pilot" = "secradio",
 		// Supply
 		"Quartermaster" = "supradio",
 		"Cargo Technician" = "supradio",
@@ -119,7 +123,9 @@
 	/// List of ERT jobs
 	var/list/ert_jobs = list("Emergency Response Team Officer", "Emergency Response Team Engineer", "Emergency Response Team Medic", "Emergency Response Team Leader", "Emergency Response Team Member")
 	/// List of CentComm jobs
-	var/list/cc_jobs = list("Nanotrasen Navy Officer", "Special Operations Officer", "Syndicate Officer")
+	var/list/cc_jobs = list("Nanotrasen Navy Officer", "Special Operations Officer", "Syndicate Officer", "Solar Federation General")
+	/// List of SolGov Marine jobs
+	var/list/tsf_jobs = list("Solar Federation Specops Lieutenant", "Solar Federation Specops Marine", "Solar Federation Lieutenant", "Solar Federation Marine")
 	// Defined so code compiles and incase someone has a non-standard job
 	var/job_class = "radio"
 	// NOW FOR ACTUAL TOGGLES
@@ -278,7 +284,7 @@
 	// Makes heads of staff bold
 	if(toggle_command_bold)
 		var/job = tcm.sender_job
-		if((job in ert_jobs) || (job in heads) || (job in cc_jobs))
+		if((job in ert_jobs) || (job in heads) || (job in cc_jobs) || (job in tsf_jobs))
 			for(var/I in 1 to length(message_pieces))
 				var/datum/multilingual_say_piece/S = message_pieces[I]
 				if(!S.message)

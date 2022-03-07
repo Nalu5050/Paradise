@@ -5,7 +5,6 @@
 	clothes_req = 1
 	invocation = "TEMPUS FUGIT"
 	invocation_type = "shout"
-	range = 0
 	cooldown_min = 20
 	summon_amt = 1
 	action_icon_state = "time"
@@ -20,10 +19,7 @@
 	layer = FLY_LAYER
 	pixel_x = -64
 	pixel_y = -64
-	unacidable = 1
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	mob/living/immune = list() // the one who creates the timestop is immune
-	list/stopped_atoms = list()
 	freezerange = 2
 	duration = 300
 	alpha = 125

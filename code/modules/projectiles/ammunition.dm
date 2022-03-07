@@ -18,6 +18,7 @@
 	var/randomspread = 0						//Randomspread for automatics
 	var/click_cooldown_override = 0				//Override this to make your gun have a faster fire rate, in tenths of a second. 4 is the default gun cooldown.
 	var/harmful = TRUE //pacifism check for boolet, set to FALSE if bullet is non-lethal
+	var/leaves_residue      		    		//¿Queda polvora en las manos y en la ropa?
 
 	/// What type of muzzle flash effect will be shown. If null then no effect and flash of light will be shown
 	var/muzzle_flash_effect = /obj/effect/temp_visual/target_angled/muzzle_flash
@@ -88,6 +89,14 @@
 				to_chat(user, "<span class='notice'>There is no bullet in the casing to inscribe anything into.</span>")
 		..()
 
+/obj/item/ammo_casing/proc/leave_residue(mob/living/carbon/human/H)
+	for(H)
+		if(H.gloves)
+			var/obj/item/clothing/G = H.gloves
+			G.gunshot_residue = caliber
+		else
+			H.gunshot_residue = caliber
+
 /obj/item/ammo_casing/decompile_act(obj/item/matter_decompiler/C, mob/user)
 	if(!BB)
 		C.stored_comms["metal"] += 1
@@ -116,12 +125,14 @@
 	var/icon_prefix // boxes with multiple sprites use this as their base
 	var/caliber
 	var/multiload = 1
+	var/load_start = TRUE // HISPANIA, MAPPING HELPER
 	var/list/initial_mats //For calculating refund values.
 
 /obj/item/ammo_box/New()
 	..()
-	for(var/i in 1 to max_ammo)
-		stored_ammo += new ammo_type(src)
+	if(load_start)
+		for(var/i in 1 to max_ammo)
+			stored_ammo += new ammo_type(src)
 	update_icon()
 	initial_mats = materials.Copy()
 	update_mat_value()

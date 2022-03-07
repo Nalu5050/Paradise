@@ -1,6 +1,6 @@
 /obj/item/ammo_casing/a357
 	desc = "A .357 bullet casing."
-	caliber = "357"
+	caliber = ".357"
 	projectile_type = /obj/item/projectile/bullet
 	muzzle_flash_strength = MUZZLE_FLASH_STRENGTH_NORMAL
 	muzzle_flash_range = MUZZLE_FLASH_RANGE_STRONG
@@ -31,18 +31,18 @@
 
 /obj/item/ammo_casing/c38
 	desc = "A .38 bullet casing."
-	caliber = "38"
+	caliber = ".38"
 	icon_state = "r-casing"
-	projectile_type = /obj/item/projectile/bullet/weakbullet2
+	projectile_type = /obj/item/projectile/bullet/c38
 	muzzle_flash_strength = MUZZLE_FLASH_STRENGTH_NORMAL
 	muzzle_flash_range = MUZZLE_FLASH_RANGE_NORMAL
 
 /obj/item/ammo_casing/c38/invisible
-	projectile_type = /obj/item/projectile/bullet/weakbullet2/invisible
+	projectile_type = /obj/item/projectile/bullet/mime
 	muzzle_flash_effect = null // invisible eh
 
 /obj/item/ammo_casing/c38/invisible/fake
-	projectile_type = /obj/item/projectile/bullet/weakbullet2/invisible/fake
+	projectile_type = /obj/item/projectile/bullet/mime/fake
 
 /obj/item/ammo_casing/c10mm
 	desc = "A 10mm bullet casing."
@@ -86,7 +86,7 @@
 	muzzle_flash_range = MUZZLE_FLASH_RANGE_NORMAL
 
 /obj/item/ammo_casing/c46x30mm/ap
-	projectile_type = /obj/item/projectile/bullet/armourpiercing
+	projectile_type = /obj/item/projectile/bullet/armourpiercing/wt550
 
 /obj/item/ammo_casing/c46x30mm/tox
 	projectile_type = /obj/item/projectile/bullet/toxinbullet
@@ -124,7 +124,7 @@
 	name = "magnetic spear"
 	desc = "A reusable spear that is typically loaded into kinetic spearguns."
 	projectile_type = /obj/item/projectile/bullet/reusable/magspear
-	caliber = "speargun"
+	caliber = "spear"
 	icon_state = "magspear"
 	throwforce = 15 //still deadly when thrown
 	throw_speed = 3
@@ -134,7 +134,7 @@
 	name = "shotgun slug"
 	desc = "A 12 gauge lead slug."
 	icon_state = "blshell"
-	caliber = "shotgun"
+	caliber = ".12"
 	casing_drop_sound = 'sound/weapons/gun_interactions/shotgun_fall.ogg'
 	projectile_type = /obj/item/projectile/bullet
 	materials = list(MAT_METAL=4000)
@@ -206,17 +206,11 @@
 	muzzle_flash_color = "#FFFF00"
 
 
-/obj/item/ammo_casing/shotgun/meteorshot
-	name = "meteorshot shell"
+/obj/item/ammo_casing/shotgun/meteorslug
+	name = "meteorslug shell"
 	desc = "A shotgun shell rigged with CMC technology, which launches a massive slug when fired."
 	icon_state = "mshell"
 	projectile_type = /obj/item/projectile/bullet/meteorshot
-
-/obj/item/ammo_casing/shotgun/breaching
-	name = "breaching shell"
-	desc = "An economic version of the meteorshot, utilizing similar technologies. Great for busting down doors."
-	icon_state = "mshell"
-	projectile_type = /obj/item/projectile/bullet/meteorshot/weak
 
 /obj/item/ammo_casing/shotgun/pulseslug
 	name = "pulse slug"
@@ -235,7 +229,7 @@
 	muzzle_flash_color = LIGHT_COLOR_FIRE
 
 /obj/item/ammo_casing/shotgun/frag12
-	name = "FRAG-12 slug"
+	name = "\improper FRAG-12 slug"
 	desc = "A high explosive breaching round for a 12 gauge shotgun."
 	icon_state = "heshell"
 	projectile_type = /obj/item/projectile/bullet/frag12

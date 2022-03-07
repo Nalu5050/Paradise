@@ -15,7 +15,7 @@
 	anchored = 1
 	density = 1
 	on_blueprints = TRUE
-	armor = list("melee" = 25, "bullet" = 10, "laser" = 10, "energy" = 100, "bomb" = 0, "bio" = 100, "rad" = 100, "fire" = 90, "acid" = 30)
+	armor = list(MELEE = 25, BULLET = 10, LASER = 10, ENERGY = 100, BOMB = 0, BIO = 100, RAD = 100, FIRE = 90, ACID = 30)
 	max_integrity = 200
 	flags_2 = RAD_PROTECT_CONTENTS_2 | RAD_NO_CONTAMINATE_2
 	resistance_flags = FIRE_PROOF
@@ -95,7 +95,7 @@
 
 // attack by item places it in to disposal
 /obj/machinery/disposal/attackby(obj/item/I, mob/user, params)
-	if(stat & BROKEN || !I || !user)
+	if(stat & BROKEN || !user || I.flags & ABSTRACT)
 		return
 
 	src.add_fingerprint(user)
@@ -129,20 +129,11 @@
 				add_attack_logs(usr, GM, "Disposal'ed", !!GM.ckey ? null : ATKLOG_ALL)
 		return
 
-	if(!I)
+	if(!user.drop_item() || QDELETED(I))
 		return
 
-	if(!user.drop_item())
-		return
-	if(I)
-		I.forceMove(src)
-
-	to_chat(user, "You place [I] into [src].")
-	for(var/mob/M in viewers(src))
-		if(M == user)
-			continue
-		M.show_message("[user.name] places [I] into [src].", 3)
-
+	I.forceMove(src)
+	user.visible_message("[user] places [I] into [src].", "You place [I] into [src].")
 	update()
 
 
@@ -415,7 +406,7 @@
 	flick("[icon_state]-flush", src)
 
 	var/wrapcheck = 0
-	var/obj/structure/disposalholder/H = new()	// virtual holder object which actually
+	var/obj/structure/disposalholder/H = new(src)	// virtual holder object which actually
 												// travels through the pipes.
 	//Hacky test to get drones to mail themselves through disposals.
 	for(var/mob/living/silicon/robot/drone/D in src)
@@ -649,22 +640,22 @@
 
 
 	// called when player tries to move while in a pipe
-/obj/structure/disposalholder/relaymove(mob/user as mob)
-	if(!istype(user,/mob/living))
+/obj/structure/disposalholder/relaymove(mob/user)
+	if(!istype(user, /mob/living))
 		return
 
 	var/mob/living/U = user
 
-	if(U.stat || U.last_special <= world.time)
+	if(U.stat || world.time <= U.last_special)
 		return
 
-	U.last_special = world.time+100
+	U.last_special = world.time + 100
 
-	if(src.loc)
-		for(var/mob/M in hearers(src.loc.loc))
+	if(loc)
+		for(var/mob/M in hearers(loc.loc))
 			to_chat(M, "<FONT size=[max(0, 5 - get_dist(src, M))]>CLONG, clong!</FONT>")
 
-	playsound(src.loc, 'sound/effects/clang.ogg', 50, 0, 0)
+	playsound(loc, 'sound/effects/clang.ogg', 50, 0, 0)
 
 	// called to vent all gas in holder to a location
 /obj/structure/disposalholder/proc/vent_gas(atom/location)
@@ -688,11 +679,12 @@
 	dir = 0				// dir will contain dominant direction for junction pipes
 	var/health = 10 	// health points 0-10
 	max_integrity = 200
-	armor = list("melee" = 25, "bullet" = 10, "laser" = 10, "energy" = 100, "bomb" = 0, "bio" = 100, "rad" = 100, "fire" = 90, "acid" = 30)
+	armor = list(MELEE = 25, BULLET = 10, LASER = 10, ENERGY = 100, BOMB = 0, BIO = 100, RAD = 100, FIRE = 90, ACID = 30)
 	damage_deflection = 10
 	flags_2 = RAD_PROTECT_CONTENTS_2 | RAD_NO_CONTAMINATE_2
+	plane = FLOOR_PLANE
 	layer = DISPOSAL_PIPE_LAYER				// slightly lower than wires and other pipes
-	var/base_icon_state	// initial icon state on map
+	base_icon_state	// initial icon state on map
 
 	// new pipe, set the icon_state as on map
 /obj/structure/disposalpipe/Initialize(mapload)
@@ -757,6 +749,9 @@
 // update the icon_state to reflect hidden status
 /obj/structure/disposalpipe/proc/update()
 	var/turf/T = get_turf(src)
+	if(T.transparent_floor)
+		update_icon()
+		return
 	hide(T.intact && !istype(T, /turf/space))	// space never hides pipes
 	update_icon()
 
@@ -794,8 +789,8 @@
 		return
 	if(T.intact && istype(T,/turf/simulated/floor)) //intact floor, pop the tile
 		var/turf/simulated/floor/F = T
-		new F.floor_tile(H)
-		F.remove_tile(null, TRUE, FALSE)
+		if(F.remove_tile(null, TRUE, FALSE))
+			new F.floor_tile(H)
 
 	if(direction)		// direction is specified
 		if(istype(T, /turf/space)) // if ended in space, then range is unlimited
@@ -889,14 +884,19 @@
 
 /obj/structure/disposalpipe/attackby(obj/item/I, mob/user, params)
 	var/turf/T = get_turf(src)
-	if(T.intact)
-		return		// prevent interaction with T-scanner revealed pipes
+	if(T.intact || T.transparent_floor)
+		to_chat(user, "<span class='danger'>You can't interact with something that's under the floor!</span>")
+		return 		// prevent interaction with T-scanner revealed pipes and pipes under glass
 
 	add_fingerprint(user)
 
 /obj/structure/disposalpipe/welder_act(mob/user, obj/item/I)
 	. = TRUE
+	var/turf/T = get_turf(src)
 	if(!I.tool_use_check(user, 0))
+		return
+	if(T.transparent_floor)
+		to_chat(user, "<span class='danger'>You can't interact with something that's under the floor!</span>")
 		return
 	WELDER_ATTEMPT_SLICING_MESSAGE
 	if(!I.use_tool(src, user, 30, volume = I.tool_volume))
@@ -1201,7 +1201,7 @@
 		return
 
 	var/turf/T = src.loc
-	if(T.intact)
+	if(T.intact || T.transparent_floor)
 		return		// prevent interaction with T-scanner revealed pipes
 	src.add_fingerprint(user)
 

@@ -272,16 +272,6 @@
 	build_path = /obj/item/circuitboard/mechfab
 	category = list("Research Machinery")
 
-/datum/design/podfab
-	name = "Machine Board (Spacepod Fabricator)"
-	desc = "The circuit board for an Spacepod Fabricator"
-	id = "podfab"
-	req_tech = list("programming" = 3, "engineering" = 3)
-	build_type = IMPRINTER
-	materials = list(MAT_GLASS = 1000)
-	build_path = /obj/item/circuitboard/podfab
-	category = list("Research Machinery")
-
 /datum/design/mech_recharger
 	name = "Machine Board (Mech Bay Recharger)"
 	desc = "The circuit board for a Mech Bay Recharger."
@@ -521,6 +511,26 @@
 	materials = list(MAT_GLASS=1000)
 	build_path = /obj/item/circuitboard/gameboard
 	category = list("Misc. Machinery")
+
+/datum/design/dnaforensics
+	name = "Machine Design (Analizador de ADN)"
+	desc = "Analizador de ADN para un analisis preciso de objetos de ADN"
+	id = "dnaforensics"
+	req_tech = list("programming" = 2, "combat" = 2, "magnets" = 2)
+	build_type = IMPRINTER
+	materials = list(MAT_GLASS = 1000)
+	build_path = /obj/item/circuitboard/dnaforensics
+	category = list ("Misc. Machinery")
+
+/datum/design/microscope
+	name = "Machine Design (Microscopio)"
+	desc = "Un microscopio electronico capaz de ampliar una imagen hasta 3000 veces."
+	id = "microscope"
+	req_tech = list("programming" = 2, "combat" = 2, "magnets" = 2)
+	build_type = IMPRINTER
+	materials = list(MAT_GLASS = 1000)
+	build_path = /obj/item/circuitboard/microscope
+	category = list ("Misc. Machinery")
 
 /datum/design/plantgenes
 	name = "Machine Design (Plant DNA Manipulator Board)"

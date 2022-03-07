@@ -12,7 +12,6 @@
 	/// The zone this mob is currently targeting
 	var/zone_selected = null
 
-	var/obj/screen/hands = null
 	var/obj/screen/pullin = null
 	var/obj/screen/i_select = null
 	var/obj/screen/m_select = null
@@ -59,6 +58,7 @@
 	var/list/speak_emote = list("says") // Verbs used when speaking. Defaults to 'say' if speak_emote is null.
 	var/emote_type = 1		// Define emote default type, 1 for seen emotes, 2 for heard emotes
 	var/name_archive //For admin things like possession
+	var/gunshot_residue
 
 	var/timeofdeath = 0 //Living
 
@@ -111,10 +111,8 @@
 
 	var/move_on_shuttle = 1 // Can move on the shuttle.
 
-	//HISPANIA
-	var/messagereal
-
-	var/has_enabled_antagHUD = 0  // Whether antagHUD was ever enabled. Not a true boolean - sometimes it is set to 2, because reasons.
+	/// Whether antagHUD has been enabled previously.
+	var/has_enabled_antagHUD = FALSE
 	var/antagHUD = FALSE  // Whether AntagHUD is active right now
 	var/can_change_intents = 1 //all mobs can change intents by default.
 	///Override for sound_environments. If this is set the user will always hear a specific type of reverb (Instead of the area defined reverb)
@@ -201,5 +199,8 @@
 
 	var/obj/effect/proc_holder/ranged_ability //Any ranged ability the mob has, as a click override
 
-	/// The location our runechat message should appear. Should be src by default.
-	var/atom/runechat_msg_location
+	/// Overrides the health HUD element state if set.
+	var/health_hud_override = HEALTH_HUD_OVERRIDE_NONE
+	/// A soft reference to the location where this mob's runechat message will appear. Uses `UID()`.
+	var/runechat_msg_location
+	var/messagereal //HISPANIA

@@ -5,7 +5,7 @@
 	dangerous_existence = TRUE //So so much
 	//language = "Clatter"
 
-	species_traits = list(IS_WHITELISTED, NO_BLOOD, NOTRANSSTING, NO_HAIR)
+	species_traits = list(IS_WHITELISTED, NO_BLOOD, NO_HAIR)
 	inherent_traits = list(TRAIT_RADIMMUNE, TRAIT_NOHUNGER)
 	inherent_biotypes = MOB_HUMANOID | MOB_MINERAL
 	forced_heartattack = TRUE // Plasmamen have no blood, but they should still get heart-attacks
@@ -87,7 +87,7 @@
 		if("Shaft Miner")
 			O = new /datum/outfit/plasmaman/mining
 
-		if("Medical Doctor", "Brig Physician", "Paramedic", "Coroner")
+		if("Medical Doctor", "Paramedic", "Coroner")
 			O = new /datum/outfit/plasmaman/medical
 
 		if("Chief Medical Officer")

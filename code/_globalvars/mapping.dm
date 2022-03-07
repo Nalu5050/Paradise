@@ -42,6 +42,7 @@ GLOBAL_LIST_EMPTY(blobstart)
 GLOBAL_LIST_EMPTY(ninjastart)
 GLOBAL_LIST_EMPTY(carplist) //list of all carp-spawn landmarks
 GLOBAL_LIST_EMPTY(syndicateofficer)
+GLOBAL_LIST_EMPTY(feedmespawn)
 
 //away missions
 GLOBAL_LIST_EMPTY(awaydestinations)	//a list of landmarks that the warpgate can take you to
@@ -50,10 +51,8 @@ GLOBAL_LIST_EMPTY(awaydestinations)	//a list of landmarks that the warpgate can 
 GLOBAL_LIST_EMPTY(map_templates)
 GLOBAL_LIST_EMPTY(ruins_templates)
 GLOBAL_LIST_EMPTY(space_ruins_templates)
+GLOBAL_LIST_EMPTY(dababy_ruins_templates) // HISPANIA
 GLOBAL_LIST_EMPTY(lava_ruins_templates)
 GLOBAL_LIST_EMPTY(shelter_templates)
 GLOBAL_LIST_EMPTY(shuttle_templates)
 
-// Teleport locations
-GLOBAL_LIST_EMPTY(teleportlocs)
-GLOBAL_LIST_EMPTY(ghostteleportlocs)

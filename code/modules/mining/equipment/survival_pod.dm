@@ -73,10 +73,12 @@
 /obj/structure/window/full/shuttle/survival_pod
 	name = "pod window"
 	icon = 'icons/obj/smooth_structures/pod_window.dmi'
-	icon_state = "smooth"
-	smooth = SMOOTH_MORE
+	icon_state = "pod_window-0"
+	base_icon_state = "pod_window"
+	smoothing_flags = SMOOTH_BITMASK
 	glass_type = /obj/item/stack/sheet/titaniumglass
-	canSmoothWith = list(/turf/simulated/wall/mineral/titanium/survival, /obj/machinery/door/airlock/survival_pod, /obj/structure/window/full/shuttle/survival_pod)
+	smoothing_groups = list(SMOOTH_GROUP_SHUTTLE_PARTS, SMOOTH_GROUP_SURVIVAL_TIANIUM_POD)
+	canSmoothWith = list(SMOOTH_GROUP_SURVIVAL_TIANIUM_POD)
 
 /obj/structure/window/reinforced/survival_pod
 	name = "pod window"
@@ -128,7 +130,9 @@
 /obj/structure/table/survival_pod
 	icon = 'icons/obj/lavaland/survival_pod.dmi'
 	icon_state = "table"
-	smooth = SMOOTH_FALSE
+	smoothing_flags = NONE
+	smoothing_groups = null
+	canSmoothWith = null
 
 //Sleeper
 /obj/machinery/sleeper/survival_pod
@@ -155,7 +159,7 @@
 	desc = "Wall-mounted Medical Equipment dispenser. This one seems just a tiny bit smaller."
 	req_access = list()
 
-	products = list(/obj/item/stack/medical/splint = 2, /obj/item/reagent_containers/syringe/charcoal = 1, /obj/item/reagent_containers/food/pill/patch/styptic = 2, /obj/item/reagent_containers/food/pill/patch/silver_sulf = 2) //Buff menor a mineria
+	products = list(/obj/item/stack/medical/splint = 2)
 	contraband = list()
 
 //Computer
@@ -204,9 +208,6 @@
 
 	if(empty)
 		return
-
-	var/obj/item/storage/bag/plasticbag/mre/M = new(src) // HISPANIA MRE
-	load(M)
 
 	for(var/i in 1 to 5)
 		var/obj/item/reagent_containers/food/snacks/warmdonkpocket_weak/W = new(src)
@@ -326,7 +327,7 @@
 						/obj/item/lava_staff,
 						/obj/item/katana/energy,
 						/obj/item/hierophant_club,
-						/obj/item/storage/toolbox/green/memetic,
+						/obj/item/his_grace,
 						/obj/item/gun/projectile/automatic/fullauto/l6_saw,
 						/obj/item/gun/magic/staff/chaos,
 						/obj/item/gun/magic/staff/spellblade,

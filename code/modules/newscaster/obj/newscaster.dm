@@ -65,6 +65,10 @@
 
 /obj/machinery/newscaster/Initialize(mapload)
 	. = ..()
+	if(is_security)
+		name = "security newscaster"
+	else
+		name = "newscaster"
 	if(!jobblacklist)
 		jobblacklist = list(
 			/datum/job/ai,
@@ -80,7 +84,8 @@
 			/datum/job/chaplain,
 			/datum/job/ntnavyofficer,
 			/datum/job/ntspecops,
-			/datum/job/civilian,
+			/datum/job/ntspecops/solgovspecops,
+			/datum/job/assistant,
 			/datum/job/syndicateofficer
 		)
 
@@ -234,7 +239,8 @@
 					if(now >= m["publish_time"])
 						var/datum/feed_message/FM = locateUID(m["uid"])
 						if(FM && !(FM.censor_flags & CENSOR_STORY))
-							FM.view_count++
+							if(isliving(user))
+								FM.view_count++
 							m["view_count"] = FM.view_count
 				// Update the last viewed times for the user
 				LAZYINITLIST(last_views[user_name])

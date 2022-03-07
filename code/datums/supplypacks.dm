@@ -273,14 +273,6 @@ GLOBAL_LIST_INIT(all_supply_groups, list(SUPPLY_EMERGENCY,SUPPLY_SECURITY,SUPPLY
 	cost = 15
 	containername = "laser crate"
 
-/datum/supply_packs/security/taser
-	name = "Stun Guns Crate"
-	contains = list(/obj/item/gun/energy/gun/advtaser,
-					/obj/item/gun/energy/gun/advtaser,
-					/obj/item/gun/energy/gun/advtaser)
-	cost = 15
-	containername = "stun gun crate"
-
 /datum/supply_packs/security/disabler
 	name = "Disabler Crate"
 	contains = list(/obj/item/gun/energy/disabler,
@@ -291,11 +283,13 @@ GLOBAL_LIST_INIT(all_supply_groups, list(SUPPLY_EMERGENCY,SUPPLY_SECURITY,SUPPLY
 
 /datum/supply_packs/security/forensics
 	name = "Forensics Crate"
-	contains = list(/obj/item/detective_scanner,
-					/obj/item/storage/box/evidence,
+	contains = list(/obj/item/storage/box/evidence,
 					/obj/item/camera,
 					/obj/item/taperecorder,
 					/obj/item/toy/crayon/white,
+					/obj/item/storage/box/swabs,
+					/obj/item/storage/box/fingerprints,
+					/obj/item/storage/briefcase/crimekit,
 					/obj/item/clothing/head/det_hat)
 	cost = 20
 	containername = "forensics crate"
@@ -530,7 +524,7 @@ GLOBAL_LIST_INIT(all_supply_groups, list(SUPPLY_EMERGENCY,SUPPLY_SECURITY,SUPPLY
 				/obj/item/reagent_containers/spray/pepper,
 				/obj/item/flash,
 				/obj/item/grenade/flashbang,
-				/obj/item/storage/belt/security/sec,
+				/obj/item/storage/belt/security,
 				/obj/item/holosign_creator/security,
 				/obj/item/clothing/mask/gas/sechailer,
 				/obj/item/clothing/glasses/hud/security/sunglasses,
@@ -932,14 +926,6 @@ GLOBAL_LIST_INIT(all_supply_groups, list(SUPPLY_EMERGENCY,SUPPLY_SECURITY,SUPPLY
 	containername = "surgery crate"
 	access = ACCESS_MEDICAL
 
-/datum/supply_packs/medical/gloves
-	name = "Nitrile Glove Crate"
-	contains = list(/obj/item/clothing/gloves/color/latex/nitrile,
-					/obj/item/clothing/gloves/color/latex/nitrile,
-					/obj/item/clothing/gloves/color/latex/nitrile,
-					/obj/item/clothing/gloves/color/latex/nitrile)
-	cost = 50
-	containername = "nitrile glove crate"
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Science /////////////////////////////////////////
@@ -1128,7 +1114,10 @@ GLOBAL_LIST_INIT(all_supply_groups, list(SUPPLY_EMERGENCY,SUPPLY_SECURITY,SUPPLY
 					/obj/item/reagent_containers/food/drinks/bottle/goldschlager,
 					/obj/item/reagent_containers/food/drinks/cans/ale,
 					/obj/item/reagent_containers/food/drinks/cans/ale,
-					/obj/item/storage/fancy/beerbox/full, ///Hispania Beer Box
+					/obj/item/reagent_containers/food/drinks/cans/beer,
+					/obj/item/reagent_containers/food/drinks/cans/beer,
+					/obj/item/reagent_containers/food/drinks/cans/beer,
+					/obj/item/reagent_containers/food/drinks/cans/beer,
 					/obj/item/grenade/confetti,
 					/obj/item/grenade/confetti)
 	cost = 20
@@ -1215,6 +1204,12 @@ GLOBAL_LIST_INIT(all_supply_groups, list(SUPPLY_EMERGENCY,SUPPLY_SECURITY,SUPPLY
 	cost = 56 //Deer are best.
 	containertype = /obj/structure/closet/critter/deer
 	containername = "deer crate"
+
+/datum/supply_packs/organic/bunny
+	name = "Bunny Crate"
+	cost = 20
+	containertype = /obj/structure/closet/critter/bunny
+	containername = "bunny crate"
 
 ////// hippy gear
 
@@ -1455,6 +1450,12 @@ GLOBAL_LIST_INIT(all_supply_groups, list(SUPPLY_EMERGENCY,SUPPLY_SECURITY,SUPPLY
 	contains = list(/obj/item/storage/backpack/duffel/mining_conscript)
 	containertype = /obj/structure/closet/crate/secure
 	containername = "shaft miner starter kit"
+
+/datum/supply_packs/misc/carpet
+	name = "Carpet Crate"
+	cost = 20
+	contains = list(/obj/item/stack/tile/carpet/twenty)
+	containername = "carpet crate"
 
 
 ///////////// Paper Work

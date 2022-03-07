@@ -1,6 +1,6 @@
 /obj/effect/spawner/lootdrop
-	icon = 'icons/mob/screen_gen.dmi'
-	icon_state = "x2"
+	icon = 'icons/effects/spawner_icons.dmi'
+	icon_state = "questionmark"
 	color = "#00FF00"
 	var/lootcount = 1		//how many items will be spawned
 	var/lootdoubles = 1		//if the same item can be spawned twice
@@ -34,7 +34,9 @@
 				)
 
 /obj/effect/spawner/lootdrop/maintenance
-	name = "maintenance loot spawner"
+	name = "maintenance loot spawner (1 item)"
+	icon_state = "loot"
+	color = null
 
 	//How to balance this table
 	//-------------------------
@@ -135,6 +137,7 @@
 				/obj/item/stack/tape_roll = 10,
 				/obj/item/storage/bag/plasticbag = 20,
 				/obj/item/caution = 10,
+				/obj/item/fluff/kans_winter_coat_kit = 1,
 				////////////////CONTRABAND STUFF//////////////////
 				/obj/item/grenade/clown_grenade = 3,
 				/obj/item/seeds/ambrosia/cruciatus = 3,
@@ -147,6 +150,8 @@
 				/obj/item/stamp/chameleon = 2,
 				/obj/item/clothing/shoes/chameleon/noslip = 5,
 				/obj/item/clothing/mask/chameleon = 2,
+				/obj/item/clothing/mask/gas/voice_modulator = 2,
+				/obj/item/clothing/mask/gas/voice_modulator/chameleon = 2,
 				/obj/item/dnascrambler = 1,
 				/obj/item/storage/backpack/satchel_flat = 2,
 				/obj/item/storage/toolbox/syndicate = 2,
@@ -159,8 +164,24 @@
 				/obj/item/storage/secure/briefcase/syndie = 2,
 				/obj/item/storage/fancy/cigarettes/cigpack_syndicate = 2,
 				/obj/item/storage/pill_bottle/fakedeath = 2,
-				"" = 68
+				"" = 64 // Reduce this number if you add things above. Make sure all the numbers in the list add to 100 EXACTLY
 				)
+
+/obj/effect/spawner/lootdrop/maintenance/two
+	name = "maintenance loot spawner (2 items)"
+	icon_state = "doubleloot"
+	lootcount = 2
+
+/obj/effect/spawner/lootdrop/maintenance/three
+	name = "maintenance loot spawner (3 items)"
+	icon_state = "moreloot"
+	lootcount = 3
+
+/obj/effect/spawner/lootdrop/maintenance/eight
+	name = "maintenance loot spawner (8 items)"
+	icon_state = "megaloot"
+	lootcount = 8
+
 
 /obj/effect/spawner/lootdrop/crate_spawner // for ruins
 	name = "lootcrate spawner"
@@ -224,7 +245,6 @@
 				)
 
 /obj/effect/spawner/lootdrop/trade_sol/minerals/New()
-	. = ..()
 	if(loot && loot.len)
 		for(var/i = lootcount, i > 0, i--)
 			if(!loot.len)
@@ -235,6 +255,7 @@
 			if(lootspawn)
 				var/obj/item/stack/sheet/S = new lootspawn(get_turf(src))
 				S.amount = 25
+	. = ..()
 	qdel(src)
 
 
@@ -350,13 +371,13 @@
 				)
 
 /obj/effect/spawner/lootdrop/trade_sol/vehicle/New()
-	. = ..()
 	if(!loot.len)
 		return
 	var/lootspawn = pickweight(loot)
 	var/obj/vehicle/V = new lootspawn(get_turf(src))
 	if(V.key_type)
 		new V.key_type(get_turf(src))
+	. = ..()
 	qdel(src)
 
 

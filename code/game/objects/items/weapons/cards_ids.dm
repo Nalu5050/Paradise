@@ -89,7 +89,7 @@
 	var/list/access = list()
 	var/registered_name = "Unknown" // The name registered_name on the card
 	slot_flags = SLOT_ID
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 100)
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 100, ACID = 100)
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	var/untrackable // Can not be tracked by AI's
 
@@ -114,6 +114,8 @@
 	var/obj/item/card/id/guest/guest_pass = null // Guest pass attached to the ID
 
 /obj/item/card/id/New()
+	if("[station_name()]" == "NSS Retro Hispania")
+		icon = 'icons/hispania/retro/card_r.dmi'
 	..()
 	spawn(30)
 		if(ishuman(loc) && blood_type == "\[UNSET\]")
@@ -416,7 +418,6 @@
 							"gold",
 							"silver",
 							"centcom",
-							"centcom_old",
 							"security",
 							"medical",
 							"HoS",
@@ -484,7 +485,7 @@
 
 					if("Occupation")
 						var/list/departments =list(
-							"Civilian",
+							"Assistant",
 							"Engineering",
 							"Medical",
 							"Science",
@@ -495,11 +496,11 @@
 						)
 
 						var/department = input(user, "What job would you like to put on this card?\nChoose a department or a custom job title.\nChanging occupation will not grant or remove any access levels.","Agent Card Occupation") in departments
-						var/new_job = "Civilian"
+						var/new_job = "Assistant"
 
 						if(department == "Custom")
-							new_job = sanitize(stripped_input(user,"Choose a custom job title:","Agent Card Occupation", "Civilian", MAX_MESSAGE_LEN))
-						else if(department != "Civilian")
+							new_job = sanitize(stripped_input(user,"Choose a custom job title:","Agent Card Occupation", "Assistant", MAX_MESSAGE_LEN))
+						else if(department != "Assistant")
 							switch(department)
 								if("Engineering")
 									new_job = input(user, "What job would you like to put on this card?\nChanging occupation will not grant or remove any access levels.","Agent Card Occupation") in GLOB.engineering_positions
@@ -612,6 +613,7 @@
 	item_state = "gold_id"
 	registered_name = "Captain"
 	assignment = "Captain"
+	var/confirmacion_pickeo = FALSE
 
 /obj/item/card/id/captains_spare/New()
 	var/datum/job/captain/J = new/datum/job/captain
@@ -891,7 +893,7 @@
 	return list("data","id","gold","silver","security","medical","research","cargo","engineering","HoS","CMO","RD","CE","clown","mime","rainbow","prisoner")
 
 /proc/get_centcom_card_skins()
-	return list("centcom","centcom_old","nanotrasen","ERT_leader","ERT_empty","ERT_security","ERT_engineering","ERT_medical","ERT_janitorial","deathsquad","commander","syndie","TDred","TDgreen")
+	return list("centcom","nanotrasen","ERT_leader","ERT_empty","ERT_security","ERT_engineering","ERT_medical","ERT_janitorial","deathsquad","commander","syndie","TDred","TDgreen")
 
 /proc/get_all_card_skins()
 	return get_station_card_skins() + get_centcom_card_skins()
@@ -910,8 +912,6 @@
 			return "Research Director"
 		if("CE")
 			return "Chief Engineer"
-		if("centcom_old")
-			return "Centcom Old"
 		if("ERT_leader")
 			return "ERT Leader"
 		if("ERT_empty")

@@ -4,20 +4,12 @@
 	icobase = 'icons/mob/human_races/r_diona.dmi'
 	language = "Rootspeak"
 	speech_sounds = list('sound/voice/dionatalk1.ogg') //Credit https://www.youtube.com/watch?v=ufnvlRjsOTI [0:13 - 0:16]
-	male_laughs_sound = list('sound/hispania/voice/human/silence.ogg')//Hispania Laughs
-	female_laughs_sound = list('sound/hispania/voice/human/silence.ogg')//Hispania Laughs
 	speech_chance = 20
 	unarmed_type = /datum/unarmed_attack/diona
 	remains_type = /obj/effect/decal/cleanable/ash
-	total_health = 120
-	speed_mod = 4
-	punchdamagelow = 12
-	punchdamagehigh = 14
 
-	brute_mod = 0.75
-	stamina_mod = 0.75
-	burn_mod = 1.4
-	heatmod = 1.6
+	burn_mod = 1.25
+	heatmod = 1.5
 	var/pod = FALSE //did they come from a pod? If so, they're stronger than normal Diona.
 
 	blurb = "Commonly referred to (erroneously) as 'plant people', the Dionaea are a strange space-dwelling collective \
@@ -29,7 +21,7 @@
 	water and other radiation."
 
 	species_traits = list(NO_HAIR)
-	inherent_traits = list(TRAIT_NOGERMS, TRAIT_NODECAY, TRAIT_NOPAIN)
+	inherent_traits = list(TRAIT_NOGERMS, TRAIT_NODECAY)
 	inherent_biotypes = MOB_ORGANIC | MOB_HUMANOID | MOB_PLANT
 	clothing_flags = HAS_SOCKS
 	default_hair_colour = "#000000"
@@ -45,13 +37,13 @@
 	reagent_tag = PROCESS_ORG
 
 	has_organ = list(
-		"nutrient channel" =   /obj/item/organ/internal/liver/diona,
-		"respiratory vacuoles" =   /obj/item/organ/internal/lungs/diona,
-		"neural strata" =      /obj/item/organ/internal/heart/diona,
+		"liver" =   /obj/item/organ/internal/liver/diona,
+		"lungs" =   /obj/item/organ/internal/lungs/diona,
+		"heart" =      /obj/item/organ/internal/heart/diona,
 		"eyes"			 =      /obj/item/organ/internal/eyes/diona, //Default darksight of 2.
-		"gas bladder" =        /obj/item/organ/internal/brain/diona,
-		"polyp segment" =      /obj/item/organ/internal/kidneys/diona,
-		"anchoring ligament" = /obj/item/organ/internal/appendix/diona
+		"brain" =        /obj/item/organ/internal/brain/diona,
+		"kidneys" =      /obj/item/organ/internal/kidneys/diona,
+		"appendix" = /obj/item/organ/internal/appendix/diona
 		)
 	has_limbs = list(
 		"chest" =  list("path" = /obj/item/organ/external/chest/diona),
@@ -93,7 +85,7 @@
 
 /datum/species/diona/handle_life(mob/living/carbon/human/H)
 	var/light_amount = 0 //how much light there is in the place, affects receiving nutrition and healing
-	var/is_vamp = H.mind?.vampire != null
+	var/is_vamp = H.mind && H.mind.has_antag_datum(/datum/antagonist/vampire)
 	if(isturf(H.loc)) //else, there's considered to be no light
 		var/turf/T = H.loc
 		light_amount = min(1, T.get_lumcount()) - 0.5
@@ -141,12 +133,4 @@
 
 /datum/species/diona/pod //Same name and everything; we want the same limitations on them; we just want their regeneration to kick in at all times and them to have special factions
 	pod = TRUE
-
 	inherent_factions = list("plants", "vines")
-
-/datum/species/diona/apply_damage(damage = 0, damagetype = BRUTE, def_zone = null, blocked = 0, mob/living/carbon/human/H, sharp = 0, obj/used_weapon = null)
-	var/old_brute_mob = brute_mod
-	if(sharp)
-		brute_mod = 1
-	..()
-	brain_mod += old_brute_mob - 1

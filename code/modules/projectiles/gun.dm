@@ -58,7 +58,7 @@
 	var/knife_x_offset = 0
 	var/knife_y_offset = 0
 
-	var/can_holster = TRUE
+	var/can_holster = FALSE  // Anything that can be holstered should be manually set
 
 	var/list/upgrades = list()
 
@@ -104,6 +104,9 @@
 			. += "<span class='info'>[bayonet] looks like it can be <b>unscrewed</b> from [src].</span>"
 	else if(can_bayonet)
 		. += "It has a <b>bayonet</b> lug on it."
+
+/obj/item/gun/detailed_examine() // Truly detailed
+	return "This is a gun."
 
 /obj/item/gun/proc/process_chamber()
 	return 0
@@ -159,7 +162,7 @@
 	if(flag) //It's adjacent, is the user, or is on the user's person
 		if(target in user.contents) //can't shoot stuff inside us.
 			return
-		if(!ismob(target) && !fullauto || user.a_intent == INTENT_HARM && !fullauto) //melee attack
+		if(!ismob(target) || user.a_intent == INTENT_HARM) //melee attack
 			return
 		if(target == user && user.zone_selected != "mouth") //so we can't shoot ourselves (unless mouth selected)
 			return
@@ -225,6 +228,8 @@
 
 /obj/item/gun/proc/process_fire(atom/target as mob|obj|turf, mob/living/user as mob|obj, message = 1, params, zone_override, bonus_spread = 0)
 	add_fingerprint(user)
+	if(chambered)
+		chambered.leave_residue(user)
 
 	if(semicd)
 		return
@@ -248,10 +253,7 @@
 				if( i>1 && !(src in get_both_hands(user))) //for burst firing
 					break
 			if(chambered)
-				if(randomspread)
-					sprd = round((rand() - 0.5) * (randomized_gun_spread + randomized_bonus_spread))
-				else
-					sprd = round((i / burst_size - 0.5) * (randomized_gun_spread + randomized_bonus_spread))
+				sprd = round((pick(0.5, -0.5)) * (randomized_gun_spread + randomized_bonus_spread))
 				if(!chambered.fire(target, user, params, ,suppressed, zone_override, sprd))
 					shoot_with_empty_chamber(user)
 					break
@@ -414,7 +416,7 @@
 	return TRUE
 
 /obj/item/gun/extinguish_light()
-	if(gun_light.on)
+	if(gun_light?.on)
 		toggle_gunlight()
 		visible_message("<span class='danger'>[src]'s light fades and turns off.</span>")
 

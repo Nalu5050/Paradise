@@ -1,7 +1,7 @@
 /obj/machinery/computer/robotics
 	name = "robotics control console"
 	desc = "Used to remotely lockdown or detonate linked Cyborgs."
-	icon = 'icons/obj/computer.dmi'
+	//icon = 'icons/obj/computer.dmi'
 	icon_keyboard = "tech_key"
 	icon_screen = "robot"
 	req_access = list(ACCESS_ROBOTICS)
@@ -92,7 +92,7 @@
 		return TRUE
 	if(!isAI(user))
 		return FALSE
-	return (user.mind.special_role && user.mind.original == user)
+	return (user.mind.special_role && user.mind.is_original_mob(user))
 
 /**
   * Check if the user is allowed to hack a specific borg

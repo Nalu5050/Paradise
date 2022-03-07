@@ -137,10 +137,10 @@
  */
 /obj/item/pen/edagger
 	origin_tech = "combat=3;syndicate=1"
-	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut") //these wont show up if the pen is off
 	var/on = 0
 	var/brightness_on = 2
 	light_color = LIGHT_COLOR_RED
+	armour_penetration = 20
 
 /obj/item/pen/edagger/attack_self(mob/living/user)
 	if(on)
@@ -149,6 +149,7 @@
 		sharp = 0
 		w_class = initial(w_class)
 		name = initial(name)
+		attack_verb = list()
 		hitsound = initial(hitsound)
 		embed_chance = initial(embed_chance)
 		throwforce = initial(throwforce)
@@ -161,6 +162,7 @@
 		sharp = 1
 		w_class = WEIGHT_CLASS_NORMAL
 		name = "energy dagger"
+		attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 		hitsound = 'sound/weapons/blade1.ogg'
 		embed_chance = 100 //rule of cool
 		throwforce = 35

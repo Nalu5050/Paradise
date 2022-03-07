@@ -33,11 +33,11 @@ LIGHTERS ARE IN LIGHTERS.DM
 	var/list/list_reagents = list("nicotine" = 40)
 	var/first_puff = TRUE // the first puff is a bit more reagents ingested
 	sprite_sheets = list(
-		"Vox" = 'icons/mob/species/vox/mask.dmi',
-		"Unathi" = 'icons/mob/species/unathi/mask.dmi',
-		"Tajaran" = 'icons/mob/species/tajaran/mask.dmi',
-		"Vulpkanin" = 'icons/mob/species/vulpkanin/mask.dmi',
-		"Grey" = 'icons/mob/species/grey/mask.dmi')
+		"Vox" = 'icons/mob/clothing/species/vox/mask.dmi',
+		"Unathi" = 'icons/mob/clothing/species/unathi/mask.dmi',
+		"Tajaran" = 'icons/mob/clothing/species/tajaran/mask.dmi',
+		"Vulpkanin" = 'icons/mob/clothing/species/vulpkanin/mask.dmi',
+		"Grey" = 'icons/mob/clothing/species/grey/mask.dmi')
 
 
 /obj/item/clothing/mask/cigarette/New()
@@ -61,6 +61,12 @@ LIGHTERS ARE IN LIGHTERS.DM
 	else
 		return ..()
 
+/obj/item/clothing/mask/cigarette/can_enter_storage(obj/item/storage/S, mob/user)
+	if(lit)
+		to_chat(user, "<span class='warning'>[S] can't hold [initial(name)] while it's lit!</span>") // initial(name) so it doesn't say "lit" twice in a row
+		return FALSE
+	else
+		return TRUE
 
 /obj/item/clothing/mask/cigarette/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume, global_overlay = TRUE)
 	..()
@@ -164,6 +170,10 @@ LIGHTERS ARE IN LIGHTERS.DM
 		if(flavor_text)
 			var/turf/T = get_turf(src)
 			T.visible_message(flavor_text)
+		if(iscarbon(loc))
+			var/mob/living/carbon/C = loc
+			if(C.wear_mask == src) // Don't update if it's just in their hand
+				C.wear_mask_update(src)
 		set_light(2, 0.25, "#E38F46")
 		START_PROCESSING(SSobj, src)
 
@@ -255,6 +265,9 @@ LIGHTERS ARE IN LIGHTERS.DM
 	..()
 	pixel_x = rand(-5, 5)
 	pixel_y = rand(-5, 5)
+
+/obj/item/clothing/mask/cigarette/rollie/nicotine
+	list_reagents = list("nicotine" = 40)
 
 
 /obj/item/cigbutt/roach

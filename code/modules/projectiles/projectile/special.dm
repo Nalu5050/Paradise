@@ -193,20 +193,20 @@
 
 /obj/item/projectile/bullet/frag12
 	name ="explosive slug"
-	damage = 25
-	weaken = 5
+	damage = 15
+	weaken = 1
 	alwayslog = TRUE
 
 /obj/item/projectile/bullet/frag12/on_hit(atom/target, blocked = 0)
 	..()
 	explosion(target, -1, 0, 1)
-	return 1
+	return TRUE
 
 /obj/item/projectile/plasma
 	name = "plasma blast"
 	icon_state = "plasmacutter"
 	damage_type = BRUTE
-	damage = 5
+	damage = 10
 	range = 3
 	dismemberment = 20
 	sharp = TRUE
@@ -222,12 +222,14 @@
 		forcedodge = 0
 
 /obj/item/projectile/plasma/adv
-	damage = 7
+	damage = 15
 	range = 5
+	dismemberment = 24
 
 /obj/item/projectile/plasma/adv/mech
-	damage = 10
+	damage = 25
 	range = 9
+	dismemberment = 30
 
 /obj/item/projectile/energy/teleport
 	name = "teleportation burst"

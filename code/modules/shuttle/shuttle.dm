@@ -229,6 +229,8 @@
 	var/obj/docking_port/stationary/destination
 	var/obj/docking_port/stationary/previous
 
+	var/disable_landing_helper = FALSE // HISPANIA - Desactiva el intercambio de piso dependiendo del tile al que caiga permitiendo landear en tierra y salir sin dejar un hueco de espacio.
+
 /obj/docking_port/mobile/Initialize(mapload)
 	. = ..()
 	var/area/A = get_area(src)
@@ -524,6 +526,12 @@
 		T1.postDock(S1)
 		for(var/atom/movable/M in T1)
 			M.postDock(S1)
+
+	if(!disable_landing_helper && S0)
+		for(var/i in 1 to L1.len)
+			var/turf/leturf = L1[i]
+			if(turf_type != /turf/space/transit && (istype(leturf, /turf/simulated/floor/plating/asteroid) || istype(leturf, /turf/space)))
+				leturf.ChangeTurf(turf_type)
 
 	loc = S1.loc
 	dir = S1.dir
@@ -858,7 +866,7 @@
 		next_request = world.time + 60 SECONDS	//1 minute cooldown
 		to_chat(usr, "<span class='notice'>Your request has been recieved by Centcom.</span>")
 		log_admin("[key_name(usr)] requested to move the transport ferry to Centcom.")
-		message_admins("<b>FERRY: <font color='blue'>[key_name_admin(usr)] (<A HREF='?_src_=holder;secretsfun=moveferry'>Move Ferry</a>)</b> is requesting to move the transport ferry to Centcom.</font>")
+		message_admins("<b>FERRY: <font color='#EB4E00'>[key_name_admin(usr)] (<A HREF='?_src_=holder;secretsfun=moveferry'>Move Ferry</a>)</b> is requesting to move the transport ferry to Centcom.</font>")
 		return TRUE
 
 
@@ -953,6 +961,8 @@
 		T.icon_state = icon_state
 	if(T.icon != icon)
 		T.icon = icon
+	if(T.overlays != overlays)
+		T.overlays = overlays
 	if(color)
 		T.atom_colours = atom_colours.Copy()
 		T.update_atom_colour()
