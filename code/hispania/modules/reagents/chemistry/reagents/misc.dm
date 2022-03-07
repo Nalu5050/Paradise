@@ -54,7 +54,7 @@
 	reagent_state = LIQUID
 	color = "#FF83A5"
 	process_flags = ORGANIC | SYNTHETIC
-	taste_description = "<font color='pink'><b>love</b></font>"
+	taste_description = "hate"
 
 /datum/reagent/hate/on_mob_add(mob/living/L)
 	..()

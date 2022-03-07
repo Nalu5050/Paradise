@@ -14,19 +14,19 @@
 	desc = "A large crème caramel."
 	icon_state = "gigapuddi"
 	trash = /obj/item/trash/plate
-	list_reagents = list("nutriment" = 4, "vitamin" = 8)
+	list_reagents = list("nutriment" = 2, "vitamin" = 2)
 	tastes = list("japanese" = 4, "milk" = 3)
-	bitesize = 1
+	bitesize = 50
 	icon = 'icons/hispania/obj/food/food.dmi'
 
 /obj/item/reagent_containers/food/snacks/gigapuddi/happy
 	desc = "A large crème caramel, made with extra love."
 	icon_state = "happypuddi"
-	list_reagents = list("nutriment" = 4, "vitamin" = 1, "milk" = 3, "love" = 1)
+	list_reagents = list("nutriment" = 2, "vitamin" = 1, "milk" = 1, "love" = 1)
 	tastes = list("japanese" = 4, "milk" = 3, "love" = 2)
 
 /obj/item/reagent_containers/food/snacks/gigapuddi/anger
 	desc = "A large crème caramel, made with extra hate."
 	icon_state = "angerpuddi"
-	list_reagents = list("nutriment" = 4, "vitamin" = 1, "milk" = 3, "hate" = 1)
+	list_reagents = list("nutriment" = 2, "vitamin" = 1, "milk" = 1, "hate" = 1)
 	tastes = list("japanese" = 4, "milk" = 3, "hate" = 2)
