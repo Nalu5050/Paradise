@@ -116,11 +116,26 @@ GLOBAL_LIST_INIT(snow_recipes, list(
 	force = 5
 	throwforce = 5
 	throw_speed = 3
+	icon = 'icons/hispania/obj/materials.dmi'
+
+/obj/item/stack/sheet/mineral/update_icon()
+	var/amount = round(get_amount())
+	if(amount == 1)
+		icon_state = "[initial(icon_state)]"
+	else if(amount == 2)
+		icon_state = "[initial(icon_state)]-2"
+	else if(amount == 3)
+		icon_state = "[initial(icon_state)]-3"
+	else if(amount > 5 && amount < 10)
+		icon_state = "[initial(icon_state)]-5"
+	else if(amount > 9)
+		icon_state = "[initial(icon_state)]-6"
 
 /obj/item/stack/sheet/mineral/New()
 	..()
 	pixel_x = rand(0,4)-4
 	pixel_y = rand(0,4)-4
+	update_icon()
 
 /obj/item/stack/sheet/mineral/sandstone
 	name = "sandstone brick"
@@ -250,6 +265,7 @@ GLOBAL_LIST_INIT(sandbag_recipes, list ( \
 
 /obj/item/stack/sheet/mineral/gold
 	name = "gold"
+	icon = 'icons/hispania/obj/materials.dmi'
 	icon_state = "sheet-gold"
 	singular_name = "gold bar"
 	origin_tech = "materials=4"
