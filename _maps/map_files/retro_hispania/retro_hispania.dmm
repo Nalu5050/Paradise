@@ -1083,9 +1083,7 @@
 /turf/simulated/floor,
 /area/hallway/secondary/exit)
 "aqp" = (
-/obj/effect/landmark/start{
-	name = "Civilian"
-	},
+/obj/effect/landmark/start/chaplain,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
 "aqt" = (
@@ -1418,9 +1416,7 @@
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
 	},
-/obj/effect/landmark/start{
-	name = "Chief Engineer"
-	},
+/obj/effect/landmark/start/head_of_security,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
 "axX" = (
@@ -6522,12 +6518,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/kitchen)
 "bVl" = (
-/obj/effect/landmark{
-	name = "HONKsquad"
-	},
-/obj/effect/landmark/start{
-	name = "Security Pod Pilot"
-	},
+/obj/effect/landmark/start/roboticist,
 /turf/simulated/floor/mineral/titanium,
 /area/shuttle/arrival/station)
 "bVy" = (
@@ -6565,9 +6556,7 @@
 /area/turret_protected/ai)
 "bWf" = (
 /obj/machinery/light/small,
-/obj/effect/landmark/start{
-	name = "Captain"
-	},
+/obj/effect/landmark/start/geneticist,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
 "bWk" = (
@@ -7687,9 +7676,7 @@
 	},
 /area/security/permabrig)
 "ckA" = (
-/obj/effect/landmark{
-	name = "HONKsquad"
-	},
+/obj/effect/landmark/start/scientist,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
 "ckB" = (
@@ -10130,6 +10117,10 @@
 	icon_state = "warning"
 	},
 /area/engine/engineering)
+"cTT" = (
+/obj/effect/landmark/start/quartermaster,
+/turf/simulated/floor/mineral/titanium,
+/area/shuttle/arrival/station)
 "cUm" = (
 /obj/structure/window/reinforced,
 /turf/simulated/floor/beach/water{
@@ -10342,9 +10333,7 @@
 	dir = 8;
 	on = 1
 	},
-/obj/effect/landmark{
-	name = "JoinLateCryo"
-	},
+/obj/effect/landmark/spawner/late/cryo,
 /turf/simulated/floor{
 	icon_state = "white"
 	},
@@ -10361,15 +10350,6 @@
 	icon_state = "floorgrime"
 	},
 /area/atmos)
-"cXJ" = (
-/obj/effect/landmark{
-	name = "JoinLate"
-	},
-/obj/structure/chair/comfy/shuttle{
-	dir = 8
-	},
-/turf/simulated/floor/mineral/titanium,
-/area/shuttle/arrival/station)
 "cXK" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -12342,18 +12322,11 @@
 /turf/simulated/floor/plating,
 /area/maintenance/aft)
 "dEu" = (
-/obj/effect/landmark{
-	name = "JoinLate"
-	},
 /obj/structure/chair/comfy/shuttle{
 	dir = 8
 	},
-/obj/effect/landmark/start{
-	name = "Shaft Miner"
-	},
-/obj/effect/landmark/start{
-	name = "Station Engineer"
-	},
+/obj/effect/landmark/start/shaft_miner,
+/obj/effect/landmark/newplayer_start,
 /turf/simulated/floor/mineral/titanium,
 /area/shuttle/arrival/station)
 "dEw" = (
@@ -12621,9 +12594,7 @@
 	},
 /area/engine/chiefs_office)
 "dIg" = (
-/obj/effect/landmark{
-	name = "HONKsquad"
-	},
+/obj/effect/landmark/start/janitor,
 /turf/simulated/floor/mineral/titanium,
 /area/shuttle/arrival/station)
 "dIK" = (
@@ -15377,16 +15348,8 @@
 	},
 /area/medical/paramedic)
 "eAE" = (
-/obj/effect/landmark{
-	name = "HONKsquad"
-	},
 /obj/structure/closet/walllocker/emerglocker/north,
-/obj/effect/landmark/start{
-	name = "Chaplain"
-	},
-/obj/effect/landmark/start{
-	name = "Mime"
-	},
+/obj/effect/landmark/start/nanotrasen_rep,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
 "eAS" = (
@@ -15500,6 +15463,10 @@
 	icon_state = "white"
 	},
 /area/medical/cmo)
+"eCJ" = (
+/obj/effect/landmark/start/mime,
+/turf/simulated/floor/mineral/titanium/blue,
+/area/shuttle/arrival/station)
 "eCM" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4;
@@ -19451,9 +19418,7 @@
 	name = "Arrival Shuttle Requests Console";
 	pixel_y = -30
 	},
-/obj/effect/landmark/start{
-	name = "Civilian"
-	},
+/obj/effect/landmark/start/coroner,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
 "fNB" = (
@@ -26070,6 +26035,10 @@
 	},
 /turf/simulated/wall/r_wall,
 /area/maintenance/fsmaint)
+"hMC" = (
+/obj/effect/landmark/start/magistrate,
+/turf/simulated/floor/mineral/titanium,
+/area/shuttle/arrival/station)
 "hMU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -26811,24 +26780,10 @@
 	},
 /area/bridge)
 "hYS" = (
-/obj/effect/landmark{
-	name = "JoinLate"
-	},
 /obj/structure/chair/comfy/shuttle{
 	dir = 8
 	},
-/obj/effect/landmark/start{
-	name = "Medical Doctor"
-	},
-/obj/effect/landmark/start{
-	name = "Geneticist"
-	},
-/obj/effect/landmark/start{
-	name = "Scientist"
-	},
-/obj/effect/landmark/start{
-	name = "Station Engineer"
-	},
+/obj/effect/landmark/spawner/late/crew,
 /turf/simulated/floor/mineral/titanium,
 /area/shuttle/arrival/station)
 "hZc" = (
@@ -27851,21 +27806,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plasteel,
 /area/crew_quarters/locker)
-"inp" = (
-/obj/effect/landmark{
-	name = "JoinLate"
-	},
-/obj/structure/chair/comfy/shuttle{
-	dir = 8
-	},
-/obj/effect/landmark/start{
-	name = "Medical Doctor"
-	},
-/obj/effect/landmark/start{
-	name = "Security Officer"
-	},
-/turf/simulated/floor/mineral/titanium,
-/area/shuttle/arrival/station)
 "inK" = (
 /obj/machinery/vending/cola,
 /obj/structure/spider/stickyweb,
@@ -28486,12 +28426,7 @@
 	},
 /area/hallway/primary/central/sw)
 "iyp" = (
-/obj/effect/landmark/start{
-	name = "Civilian"
-	},
-/obj/effect/landmark/start{
-	name = "Internal Affairs Agent"
-	},
+/obj/effect/landmark/start/engineer,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
 "iyu" = (
@@ -31339,9 +31274,7 @@
 	layer = 4;
 	pixel_y = 32
 	},
-/obj/effect/landmark{
-	name = "JoinLateCryo"
-	},
+/obj/effect/landmark/spawner/late/cryo,
 /turf/simulated/floor{
 	icon_state = "white"
 	},
@@ -33180,21 +33113,6 @@
 	tag = ""
 	},
 /area/ai_monitored/storage/eva)
-"jPJ" = (
-/obj/effect/landmark{
-	name = "JoinLate"
-	},
-/obj/structure/chair/comfy/shuttle{
-	dir = 8
-	},
-/obj/effect/landmark/start{
-	name = "Chemist"
-	},
-/obj/effect/landmark/start{
-	name = "Barber"
-	},
-/turf/simulated/floor/mineral/titanium,
-/area/shuttle/arrival/station)
 "jPM" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
@@ -33859,12 +33777,7 @@
 /turf/simulated/floor/plating,
 /area/assembly/assembly_line)
 "kbf" = (
-/obj/effect/landmark/start{
-	name = "Botanist"
-	},
-/obj/effect/landmark/start{
-	name = "Warden"
-	},
+/obj/effect/landmark/start/detective,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
 "kbj" = (
@@ -33989,6 +33902,10 @@
 /area/hallway/secondary/construction{
 	name = "\improper Garden"
 	})
+"kdG" = (
+/obj/effect/landmark/start/atmospheric,
+/turf/simulated/floor/mineral/titanium/blue,
+/area/shuttle/arrival/station)
 "kdK" = (
 /obj/machinery/camera{
 	c_tag = "Bridge West Entrance";
@@ -35878,6 +35795,7 @@
 /turf/simulated/floor/plasteel,
 /area/assembly/chargebay)
 "kDU" = (
+/obj/effect/landmark/start/research_director,
 /turf/simulated/floor/mineral/titanium,
 /area/shuttle/arrival/station)
 "kEd" = (
@@ -37028,12 +36946,7 @@
 /turf/simulated/floor/plasteel,
 /area/teleporter)
 "kVr" = (
-/obj/effect/landmark{
-	name = "HONKsquad"
-	},
-/obj/effect/landmark/start{
-	name = "Detective"
-	},
+/obj/effect/landmark/start/paramedic,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
 "kVt" = (
@@ -39948,24 +39861,6 @@
 	icon_state = "blue"
 	},
 /area/hallway/primary/central/south)
-"lNK" = (
-/obj/effect/landmark{
-	name = "JoinLate"
-	},
-/obj/structure/chair/comfy/shuttle{
-	dir = 8
-	},
-/obj/effect/landmark/start{
-	name = "Blueshield"
-	},
-/obj/effect/landmark/start{
-	name = "Roboticist"
-	},
-/obj/effect/landmark/start{
-	name = "Mechanic"
-	},
-/turf/simulated/floor/mineral/titanium,
-/area/shuttle/arrival/station)
 "lOi" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/manifold/hidden{
@@ -41191,21 +41086,10 @@
 	},
 /area/aisat/entrance)
 "meb" = (
-/obj/effect/landmark{
-	name = "JoinLate"
-	},
 /obj/structure/chair/comfy/shuttle{
 	dir = 8
 	},
-/obj/effect/landmark/start{
-	name = "Medical Doctor"
-	},
-/obj/effect/landmark/start{
-	name = "Roboticist"
-	},
-/obj/effect/landmark/start{
-	name = "Security Officer"
-	},
+/obj/effect/landmark/start/virologist,
 /turf/simulated/floor/mineral/titanium,
 /area/shuttle/arrival/station)
 "mex" = (
@@ -42449,9 +42333,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/effect/landmark{
-	name = "JoinLateCryo"
-	},
+/obj/effect/landmark/spawner/late/cryo,
 /turf/simulated/floor{
 	icon_state = "white"
 	},
@@ -43059,6 +42941,10 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/security/processing)
+"mFZ" = (
+/obj/effect/landmark/start/barber,
+/turf/simulated/floor/mineral/titanium/blue,
+/area/shuttle/arrival/station)
 "mGa" = (
 /obj/machinery/atmospherics/unary/vent_scrubber{
 	dir = 8;
@@ -43551,12 +43437,7 @@
 	},
 /area/security/evidence)
 "mOc" = (
-/obj/effect/landmark/start{
-	name = "Civilian"
-	},
-/obj/effect/landmark/start{
-	name = "Paramedic"
-	},
+/obj/effect/landmark/start/cargo_technician,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
 "mOm" = (
@@ -43708,9 +43589,7 @@
 	},
 /area/medical/virology/lab)
 "mQm" = (
-/obj/effect/landmark/start{
-	name = "Chef"
-	},
+/obj/effect/landmark/start/chef,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
 "mQt" = (
@@ -44190,6 +44069,10 @@
 /obj/effect/spawner/window/reinforced,
 /turf/simulated/floor/plating,
 /area/quartermaster/storage)
+"nan" = (
+/obj/effect/landmark/start/librarian,
+/turf/simulated/floor/mineral/titanium,
+/area/shuttle/arrival/station)
 "nat" = (
 /obj/structure/table/wood,
 /turf/simulated/floor/wood,
@@ -44629,9 +44512,7 @@
 	scrub_N2O = 1;
 	scrub_Toxins = 1
 	},
-/obj/effect/landmark{
-	name = "JoinLateCryo"
-	},
+/obj/effect/landmark/spawner/late/cryo,
 /turf/simulated/floor{
 	icon_state = "white"
 	},
@@ -46274,9 +46155,7 @@
 	dir = 1
 	},
 /obj/structure/chair/comfy/shuttle,
-/obj/effect/landmark/start{
-	name = "Chief Medical Officer"
-	},
+/obj/effect/landmark/start/chief_medical_officer,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
 "nID" = (
@@ -48020,24 +47899,10 @@
 	},
 /area/engine/engineering)
 "omA" = (
-/obj/effect/landmark{
-	name = "JoinLate"
-	},
 /obj/structure/chair/comfy/shuttle{
 	dir = 8
 	},
-/obj/effect/landmark/start{
-	name = "Chemist"
-	},
-/obj/effect/landmark/start{
-	name = "Psychiatrist"
-	},
-/obj/effect/landmark/start{
-	name = "Librarian"
-	},
-/obj/effect/landmark/start{
-	name = "Life Support Specialist"
-	},
+/obj/effect/landmark/start/warden,
 /turf/simulated/floor/mineral/titanium,
 /area/shuttle/arrival/station)
 "omU" = (
@@ -50438,12 +50303,7 @@
 /turf/simulated/floor/plasteel,
 /area/hallway/primary/starboard/east)
 "oXC" = (
-/obj/effect/landmark/start{
-	name = "Botanist"
-	},
-/obj/effect/landmark/start{
-	name = "Clown"
-	},
+/obj/effect/landmark/start/internal_affairs,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
 "oXJ" = (
@@ -50732,9 +50592,7 @@
 	},
 /area/atmos)
 "paV" = (
-/obj/effect/landmark{
-	name = "JoinLateCryo"
-	},
+/obj/effect/landmark/spawner/late/cryo,
 /turf/simulated/floor{
 	icon_state = "white"
 	},
@@ -55803,9 +55661,7 @@
 /area/security/detectives_office)
 "qxq" = (
 /obj/machinery/light/small,
-/obj/effect/landmark/start{
-	name = "Chef"
-	},
+/obj/effect/landmark/start/chemist,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
 "qxT" = (
@@ -56449,12 +56305,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/arrival/station)
 "qJX" = (
-/obj/effect/landmark/start{
-	name = "Cargo Technician"
-	},
-/obj/effect/landmark/start{
-	name = "Shaft Miner"
-	},
+/obj/effect/landmark/start/botanist,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
 "qKa" = (
@@ -57196,12 +57047,7 @@
 	},
 /area/medical/medbay2)
 "qVA" = (
-/obj/effect/landmark/start{
-	name = "Quartermaster"
-	},
-/obj/effect/landmark/start{
-	name = "Bartender"
-	},
+/obj/effect/landmark/start/bartender,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
 "qVC" = (
@@ -57544,21 +57390,10 @@
 /turf/space,
 /area/space)
 "rcX" = (
-/obj/effect/landmark{
-	name = "JoinLate"
-	},
 /obj/structure/chair/comfy/shuttle{
 	dir = 8
 	},
-/obj/effect/landmark/start{
-	name = "Nanotrasen Representative"
-	},
-/obj/effect/landmark/start{
-	name = "Life Support Specialist"
-	},
-/obj/effect/landmark/start{
-	name = "Brig Physician"
-	},
+/obj/effect/landmark/start/security_officer,
 /turf/simulated/floor/mineral/titanium,
 /area/shuttle/arrival/station)
 "rcY" = (
@@ -58240,6 +58075,10 @@
 	icon_state = "redcorner"
 	},
 /area/hallway/primary/fore)
+"rnZ" = (
+/obj/effect/landmark/start/doctor,
+/turf/simulated/floor/mineral/titanium/blue,
+/area/shuttle/arrival/station)
 "roc" = (
 /turf/simulated/floor{
 	icon_state = "grimy"
@@ -58920,24 +58759,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
-"ryd" = (
-/obj/effect/landmark{
-	name = "JoinLate"
-	},
-/obj/structure/chair/comfy/shuttle{
-	dir = 8
-	},
-/obj/effect/landmark/start{
-	name = "Chemist"
-	},
-/obj/effect/landmark/start{
-	name = "Geneticist"
-	},
-/obj/effect/landmark/start{
-	name = "Life Support Specialist"
-	},
-/turf/simulated/floor/mineral/titanium,
-/area/shuttle/arrival/station)
 "ryy" = (
 /obj/machinery/door/window/northleft{
 	base_state = "right";
@@ -59064,9 +58885,7 @@
 	},
 /area/atmos/control)
 "rzL" = (
-/obj/effect/landmark/start{
-	name = "Scientist"
-	},
+/obj/effect/landmark/start/assistant,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
 "rzU" = (
@@ -59261,19 +59080,7 @@
 	},
 /area/assembly/robotics)
 "rCN" = (
-/obj/structure/closet/walllocker/emerglocker/north,
-/obj/machinery/light/small{
-	dir = 1
-	},
-/obj/effect/landmark/start{
-	name = "Cargo Technician"
-	},
-/obj/effect/landmark/start{
-	name = "Internal Affairs Agent"
-	},
-/obj/effect/landmark/start{
-	name = "Cyborg"
-	},
+/obj/effect/landmark/spawner/late/cyborg,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
 "rCO" = (
@@ -66634,9 +66441,7 @@
 	name = "\improper Engineering Training"
 	})
 "tKO" = (
-/obj/effect/landmark/start{
-	name = "Magistrate"
-	},
+/obj/effect/landmark/start/captain,
 /turf/simulated/floor/mineral/titanium,
 /area/shuttle/arrival/station)
 "tKT" = (
@@ -67444,6 +67249,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/library)
+"tXN" = (
+/obj/effect/landmark/start/clown,
+/turf/simulated/floor/mineral/titanium/blue,
+/area/shuttle/arrival/station)
 "tXO" = (
 /obj/machinery/portable_atmospherics/canister/air,
 /turf/simulated/floor/plating,
@@ -71481,6 +71290,7 @@
 /obj/effect/landmark{
 	name = "Observer-Start"
 	},
+/obj/effect/landmark/start/blueshield,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
 "vfQ" = (
@@ -74461,9 +74271,7 @@
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
 	},
-/obj/effect/landmark/start{
-	name = "Head of Security"
-	},
+/obj/effect/landmark/start/head_of_personnel,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
 "wdQ" = (
@@ -75603,27 +75411,6 @@
 /obj/structure/rack,
 /turf/simulated/floor/plating,
 /area/maintenance/fpmaint2)
-"wvV" = (
-/obj/effect/landmark{
-	name = "JoinLate"
-	},
-/obj/structure/chair/comfy/shuttle{
-	dir = 8
-	},
-/obj/effect/landmark/start{
-	name = "Head of Personnel"
-	},
-/obj/effect/landmark/start{
-	name = "Janitor"
-	},
-/obj/effect/landmark/start{
-	name = "Medical Doctor"
-	},
-/obj/effect/landmark/start{
-	name = "Security Officer"
-	},
-/turf/simulated/floor/mineral/titanium,
-/area/shuttle/arrival/station)
 "wwe" = (
 /obj/machinery/light,
 /obj/machinery/camera{
@@ -78501,6 +78288,10 @@
 	},
 /turf/simulated/floor,
 /area/engine/break_room)
+"xsc" = (
+/obj/effect/landmark/start/psychiatrist,
+/turf/simulated/floor/mineral/titanium,
+/area/shuttle/arrival/station)
 "xse" = (
 /obj/structure/closet/secure_closet/freezer/money,
 /obj/machinery/ai_status_display{
@@ -81250,9 +81041,7 @@
 /area/security/permabrig)
 "yjM" = (
 /obj/structure/chair/comfy/shuttle,
-/obj/effect/landmark/start{
-	name = "Research Director"
-	},
+/obj/effect/landmark/start/chief_engineer,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
 "yjQ" = (
@@ -90474,9 +90263,9 @@ aSY
 cWf
 eAE
 dIg
-dIg
-dIg
-ckA
+nan
+hMC
+eCJ
 cWf
 toX
 vFk
@@ -90732,7 +90521,7 @@ jlP
 oXC
 omA
 rcX
-ryd
+hYS
 mQm
 jlP
 uXj
@@ -90988,8 +90777,8 @@ oML
 cWf
 etr
 rzL
-rzL
-rzL
+kdG
+mFZ
 qxq
 cWf
 omX
@@ -91246,7 +91035,7 @@ cWf
 rDr
 hYS
 dEu
-dEu
+hYS
 kbf
 cWf
 jNq
@@ -91504,7 +91293,7 @@ xEL
 qVA
 vfI
 qJX
-aqp
+rnZ
 qJG
 jNq
 aGM
@@ -91758,10 +91547,10 @@ njI
 jNq
 qJG
 fhl
-cXJ
-jPJ
-lNK
-aqp
+hYS
+hYS
+hYS
+tXN
 qJG
 jNq
 qWy
@@ -92272,9 +92061,9 @@ jQH
 ivN
 cWf
 rCN
-wvV
+hYS
 meb
-inp
+hYS
 bWf
 cWf
 vme
@@ -92530,8 +92319,8 @@ ckJ
 jlP
 ckA
 bVl
-dIg
-dIg
+cTT
+xsc
 kVr
 jlP
 uXj
