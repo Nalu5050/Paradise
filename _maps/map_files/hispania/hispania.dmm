@@ -741,12 +741,6 @@
 	icon_state = "white"
 	},
 /area/toxins/teleci)
-"abp" = (
-/obj/effect/landmark{
-	name = "carpspawn"
-	},
-/turf/space,
-/area/space)
 "abq" = (
 /obj/machinery/power/apc{
 	dir = 2;
@@ -8082,14 +8076,6 @@
 	icon_state = "dark"
 	},
 /area/security/main)
-"aqL" = (
-/obj/structure/lattice,
-/obj/effect/landmark/spawner/carp{
-	step_x = 0;
-	step_y = 0
-	},
-/turf/space,
-/area/space)
 "aqM" = (
 /obj/machinery/computer/arcade/battle,
 /turf/simulated/floor/plasteel{
@@ -96427,6 +96413,10 @@
 	icon_state = "dark"
 	},
 /area/maintenance/aft)
+"tzn" = (
+/obj/effect/landmark/spawner/carp,
+/turf/space,
+/area/space)
 "tzy" = (
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -112081,7 +112071,7 @@ aaa
 aaa
 aaa
 aaa
-nqv
+tzn
 aaa
 aaa
 aaa
@@ -113951,7 +113941,7 @@ eYZ
 dVC
 cvp
 aaa
-nqv
+tzn
 aaa
 lfe
 qqK
@@ -119616,7 +119606,7 @@ cOx
 aaa
 aab
 aaa
-nqv
+tzn
 aaa
 aaa
 aaa
@@ -120033,7 +120023,7 @@ aaa
 aaa
 aaa
 aaa
-nqv
+tzn
 aaa
 abN
 abN
@@ -120274,7 +120264,7 @@ aaa
 aaa
 aaa
 aaa
-nqv
+tzn
 aaa
 aaa
 aaa
@@ -120869,7 +120859,7 @@ oed
 lyH
 dcY
 bKB
-aaa
+tzn
 aaa
 aaa
 aaa
@@ -121702,7 +121692,7 @@ aaa
 aaa
 aaa
 aaa
-nqv
+tzn
 aaa
 aaa
 aaa
@@ -125570,7 +125560,7 @@ aaa
 aaa
 aaa
 aaa
-nqv
+tzn
 aaa
 aaa
 aaa
@@ -125903,7 +125893,7 @@ aaa
 aaa
 aaa
 aaa
-nqv
+tzn
 aaa
 aaa
 aaa
@@ -129755,7 +129745,7 @@ aaa
 aaa
 aaa
 aaa
-nqv
+tzn
 aaa
 aaa
 aaa
@@ -133099,7 +133089,7 @@ aaa
 aaa
 aaa
 aaa
-nqv
+tzn
 aaa
 aaa
 aaa
@@ -133630,7 +133620,7 @@ aaa
 aaa
 aaa
 aaa
-nqv
+tzn
 aaa
 aaa
 aaa
@@ -138523,7 +138513,7 @@ aaa
 aaa
 aaa
 aaa
-nqv
+tzn
 aaa
 aaa
 aaa
@@ -141355,7 +141345,7 @@ aaa
 aaa
 aaa
 aaa
-nqv
+tzn
 aaa
 aaa
 aaa
@@ -142357,7 +142347,7 @@ aaa
 aaa
 aaa
 aaa
-nqv
+tzn
 aaa
 aaa
 aaa
@@ -145730,7 +145720,7 @@ aaa
 aaa
 aaa
 amW
-aqL
+tzn
 aqZ
 aab
 aab
@@ -150358,7 +150348,7 @@ aaa
 aaa
 aaa
 aaa
-nqv
+tzn
 aaa
 aaa
 aaa
@@ -152429,7 +152419,7 @@ aaa
 aaa
 aaa
 aaa
-nqv
+tzn
 aaa
 aaa
 aaa
@@ -161316,7 +161306,7 @@ aaa
 aaa
 aaa
 aaa
-nqv
+tzn
 aaa
 aaa
 aaa
@@ -162522,7 +162512,7 @@ aab
 aab
 aaa
 aaa
-abp
+tzn
 aaa
 aaa
 aaa
@@ -162763,7 +162753,7 @@ aaa
 aaa
 aaa
 aaa
-abp
+tzn
 aaa
 aaa
 aaa
