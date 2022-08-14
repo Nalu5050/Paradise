@@ -89992,10 +89992,7 @@
 	},
 /area/hallway/primary/aft)
 "nqv" = (
-/obj/effect/landmark/spawner/carp{
-	step_x = 0;
-	step_y = 0
-	},
+/obj/effect/landmark/spawner/carp,
 /turf/space,
 /area/space)
 "nqy" = (
@@ -96413,10 +96410,6 @@
 	icon_state = "dark"
 	},
 /area/maintenance/aft)
-"tzn" = (
-/obj/effect/landmark/spawner/carp,
-/turf/space,
-/area/space)
 "tzy" = (
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -112071,7 +112064,7 @@ aaa
 aaa
 aaa
 aaa
-tzn
+nqv
 aaa
 aaa
 aaa
@@ -113941,7 +113934,7 @@ eYZ
 dVC
 cvp
 aaa
-tzn
+nqv
 aaa
 lfe
 qqK
@@ -119606,7 +119599,7 @@ cOx
 aaa
 aab
 aaa
-tzn
+nqv
 aaa
 aaa
 aaa
@@ -120023,7 +120016,7 @@ aaa
 aaa
 aaa
 aaa
-tzn
+nqv
 aaa
 abN
 abN
@@ -120264,7 +120257,7 @@ aaa
 aaa
 aaa
 aaa
-tzn
+nqv
 aaa
 aaa
 aaa
@@ -120859,7 +120852,7 @@ oed
 lyH
 dcY
 bKB
-tzn
+nqv
 aaa
 aaa
 aaa
@@ -121692,7 +121685,7 @@ aaa
 aaa
 aaa
 aaa
-tzn
+nqv
 aaa
 aaa
 aaa
@@ -125560,7 +125553,7 @@ aaa
 aaa
 aaa
 aaa
-tzn
+nqv
 aaa
 aaa
 aaa
@@ -125893,7 +125886,7 @@ aaa
 aaa
 aaa
 aaa
-tzn
+nqv
 aaa
 aaa
 aaa
@@ -129745,7 +129738,7 @@ aaa
 aaa
 aaa
 aaa
-tzn
+nqv
 aaa
 aaa
 aaa
@@ -133089,7 +133082,7 @@ aaa
 aaa
 aaa
 aaa
-tzn
+nqv
 aaa
 aaa
 aaa
@@ -133620,7 +133613,7 @@ aaa
 aaa
 aaa
 aaa
-tzn
+nqv
 aaa
 aaa
 aaa
@@ -138513,7 +138506,7 @@ aaa
 aaa
 aaa
 aaa
-tzn
+nqv
 aaa
 aaa
 aaa
@@ -141345,7 +141338,7 @@ aaa
 aaa
 aaa
 aaa
-tzn
+nqv
 aaa
 aaa
 aaa
@@ -142347,7 +142340,7 @@ aaa
 aaa
 aaa
 aaa
-tzn
+nqv
 aaa
 aaa
 aaa
@@ -145720,7 +145713,7 @@ aaa
 aaa
 aaa
 amW
-tzn
+nqv
 aqZ
 aab
 aab
@@ -150348,7 +150341,7 @@ aaa
 aaa
 aaa
 aaa
-tzn
+nqv
 aaa
 aaa
 aaa
@@ -152419,7 +152412,7 @@ aaa
 aaa
 aaa
 aaa
-tzn
+nqv
 aaa
 aaa
 aaa
@@ -161306,7 +161299,7 @@ aaa
 aaa
 aaa
 aaa
-tzn
+nqv
 aaa
 aaa
 aaa
@@ -162512,7 +162505,7 @@ aab
 aab
 aaa
 aaa
-tzn
+nqv
 aaa
 aaa
 aaa
@@ -162753,7 +162746,7 @@ aaa
 aaa
 aaa
 aaa
-tzn
+nqv
 aaa
 aaa
 aaa
