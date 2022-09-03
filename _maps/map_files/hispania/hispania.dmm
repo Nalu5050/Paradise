@@ -40219,8 +40219,7 @@
 /area/engine/gravitygenerator)
 "bFQ" = (
 /obj/structure/morgue{
-	dir = 8;
-	icon_state = "morgue1"
+	dir = 8
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -40248,18 +40247,6 @@
 	icon_state = "freezerfloor"
 	},
 /area/crew_quarters/toilet)
-"bFT" = (
-/obj/structure/morgue{
-	dir = 8;
-	icon_state = "morgue1"
-	},
-/obj/effect/landmark{
-	name = "revenantspawn"
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
-/area/medical/morgue)
 "bFU" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -98058,6 +98045,13 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
 /area/maintenance/apmaint)
+"vqB" = (
+/obj/structure/morgue,
+/obj/effect/landmark/spawner/rev,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/medical/morgue)
 "vqI" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -141917,7 +141911,7 @@ bob
 bFQ
 bFQ
 bFQ
-bFT
+bFQ
 bFQ
 bQH
 bRe
@@ -142172,10 +142166,10 @@ bJc
 bEu
 bby
 bEI
-bEI
-bEI
-bEI
-bEI
+vqB
+bFX
+bFX
+bFX
 bQG
 bRd
 bSD
@@ -142685,11 +142679,11 @@ bHy
 bJd
 bEu
 aZT
-bFT
-bFT
-bFT
-bFT
-bFT
+bFQ
+bFQ
+bFQ
+bFQ
+bFQ
 bNd
 bEu
 bSF
@@ -142945,7 +142939,7 @@ aZT
 bFX
 bFX
 bFX
-bEI
+bFX
 bFX
 bQJ
 bEu
