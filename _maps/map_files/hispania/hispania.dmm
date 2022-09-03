@@ -40217,6 +40217,14 @@
 	icon_state = "dark"
 	},
 /area/engine/gravitygenerator)
+"bFQ" = (
+/obj/structure/morgue{
+	dir = 8
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/medical/morgue)
 "bFR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plasteel{
@@ -85011,13 +85019,6 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/plating,
 /area/engine/break_room)
-"iyb" = (
-/obj/structure/morgue,
-/obj/effect/landmark/spawner/rev,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
-/area/medical/morgue)
 "iyc" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Mechanic Workshop Maintenance";
@@ -98044,6 +98045,13 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
 /area/maintenance/apmaint)
+"vqB" = (
+/obj/structure/morgue,
+/obj/effect/landmark/spawner/rev,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/medical/morgue)
 "vqI" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -141900,11 +141908,11 @@ bHy
 bAk
 bEu
 bob
-bFX
-bFX
-bFX
-bFX
-bFX
+bFQ
+bFQ
+bFQ
+bFQ
+bFQ
 bQH
 bRe
 bSE
@@ -142158,7 +142166,7 @@ bJc
 bEu
 bby
 bEI
-iyb
+vqB
 bFX
 bFX
 bFX
@@ -142671,11 +142679,11 @@ bHy
 bJd
 bEu
 aZT
-bFX
-bFX
-bFX
-bFX
-bFX
+bFQ
+bFQ
+bFQ
+bFQ
+bFQ
 bNd
 bEu
 bSF
